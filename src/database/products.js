@@ -3,7 +3,10 @@ import myDB from "./DB";
 
 const productsCollection = "products";
 
-const getAllProducts = async(myCategory) => {
+/** ///////////// **/
+/** SHOW PRODUCTS **/
+/** ///////////// **/
+const getAllProducts = async (myCategory) => {
     const result = [];
 
     let myQuery;
@@ -30,7 +33,10 @@ const getAllProducts = async(myCategory) => {
     return result;
 }
 
-const addNewProduct = async(title, frontImage, extraImages, description, price, category) => {
+/** //////////// **/
+/** ADD PRODUCTS **/
+/** //////////// **/
+const addNewProduct = async (title, frontImage, extraImages, description, price, category) => {
     await addDoc(collection(myDB, productsCollection), {
         title,
         frontImage,
@@ -45,10 +51,16 @@ const addNewProduct = async(title, frontImage, extraImages, description, price, 
     });
 }
 
+/** ///////////// **/
+/** EDIT PRODUCTS **/
+/** ///////////// **/
 const editProduct = () => {
 
 }
 
+/** /////////////// **/
+/** DELETE PRODUCTS **/
+/** /////////////// **/
 const deleteProduct = () => {
 
 }

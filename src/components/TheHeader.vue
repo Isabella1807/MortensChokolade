@@ -8,6 +8,8 @@
     <router-link to="/">home</router-link>
     <br>
     <router-link to="/shop">shop</router-link>
+    <br>
+    <router-link to="/admin">admin</router-link>
   </header>
 </template>
 
