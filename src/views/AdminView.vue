@@ -2,7 +2,7 @@
 import {ref} from 'vue';
 import productDB from "../database/products";
 
-const taskWindowIsVisible = ref(false);
+const addNewProductWindowVisible = ref(false);
 
 const formTitle = ref('');
 const formDescription = ref('');
@@ -13,12 +13,12 @@ const formPrice = ref('');
 const formCategory = ref('');
 const dataIsMissing = ref(false);
 
-const showAddTaskWindow = () => {
-  taskWindowIsVisible.value = true;
+const showAddProductWindow = () => {
+  addNewProductWindowVisible.value = true;
 };
 
-const hideAddTaskWindow = () => {
-  taskWindowIsVisible.value = false;
+const hideAddProductWindow = () => {
+  addNewProductWindowVisible.value = false;
   formTitle.value = '';
   formDescription.value = '';
   formFImage.value = '';
@@ -29,7 +29,7 @@ const hideAddTaskWindow = () => {
 }
 
 // TJEK OM ALLE VÆRDIER ER SAT. IKKE CREATE HVIS NOGET MANGLER
-const submitNewTaskForm = () => {
+const submitNewProductForm = () => {
   if (
       formTitle.value === ''
       || formDescription.value === ''
@@ -52,15 +52,14 @@ const submitNewTaskForm = () => {
           formCategory.value
   );
 
-  hideAddTaskWindow();
+  hideAddProductWindow();
 }
-
 
 </script>
 
 <template>
   <div>
-    <div id="AddTaskWindow" v-if="taskWindowIsVisible">
+    <div id="AddTaskWindow" v-if="addNewProductWindowVisible">
       <form v-on:submit.prevent="">
         <label for="title">Title:</label><br>
         <input type="text" id="title" placeholder="Title" v-model="formTitle"><br><br>
@@ -81,8 +80,8 @@ const submitNewTaskForm = () => {
         <input type="text" id="category" placeholder="category" v-model="formCategory"><br><br>
         <br>
 
-        <button type="submit" @click="submitNewTaskForm" class="taskWindowButton">Tilføj</button>
-        <button @click="hideAddTaskWindow" class="taskWindowButton">Luk</button>
+        <button type="submit" @click="submitNewProductForm" class="productWindowButton">Tilføj</button>
+        <button @click="hideAddProductWindow" class="productWindowButton">Luk</button>
 
         <div v-if="dataIsMissing">
           <p class="missingDataText">Alle felter ikke udfyldt</p>
@@ -90,7 +89,7 @@ const submitNewTaskForm = () => {
 
       </form>
     </div>
-    <button @click="showAddTaskWindow" class="addTaskButton" v-if="!taskWindowIsVisible">Tilføj nyt produkt</button>
+    <button @click="showAddProductWindow" class="addProductButton" v-if="!addNewProductWindowVisible">Tilføj nyt produkt</button>
   </div>
 </template>
 

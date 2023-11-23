@@ -44,12 +44,11 @@ const addNewProduct = async (title, frontImage, extraImages, description, price,
         description,
         price,
         category,
-    }).then((a) => {
-        console.log("Document written with ID: ", a);
     }).catch((e) => {
         console.error("Error adding document: ", e);
     });
 }
+
 
 /** ///////////// **/
 /** EDIT PRODUCTS **/
