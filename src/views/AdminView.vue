@@ -1,47 +1,96 @@
 <script setup>
-import {onMounted, ref} from 'vue';
+import {ref} from 'vue';
 import productDB from "../database/products";
 
-onMounted(async () => {
-  console.log('JEG ER LIGE STARTET');
-  //extraImages HAVE to be an array, price HAVE to be a number, and dont skip any parameters
-  /*productDB.addNewProduct(
-      "fff",
-      "g.png",
-      ["hejs.png", "ghgh.png"],
-      "jjj",
-      3,
-      "kategori"
-  );*/
-  const allProducts = await productDB.getAllProducts('gris');
-  console.log(allProducts);
-});
+const taskWindowIsVisible = ref(false);
+
+const formTitle = ref('');
+const formDescription = ref('');
+const formDuration = ref('');
+const formFImage = ref('');
+const formXImages = ref('');
+const formPrice = ref('');
+const formCategory = ref('');
+const dataIsMissing = ref(false);
+
+const showAddTaskWindow = () => {
+  taskWindowIsVisible.value = true;
+};
+
+const hideAddTaskWindow = () => {
+  taskWindowIsVisible.value = false;
+  formTitle.value = '';
+  formDescription.value = '';
+  formFImage.value = '';
+  formXImages.value = '';
+  formPrice.value = '';
+  formCategory.value = '';
+  dataIsMissing.value = false;
+}
+
+// TJEK OM ALLE VÆRDIER ER SAT. IKKE CREATE HVIS NOGET MANGLER
+const submitNewTaskForm = () => {
+  if (
+      formTitle.value === ''
+      || formDescription.value === ''
+      || formFImage.value === ''
+      || formXImages.value === ''
+      || formPrice.value === ''
+      || formCategory.value === '')
+  {
+    dataIsMissing.value = true;
+    return;
+  }
+
+  productDB.addNewProduct(
+      formTitle.value,
+          formDescription.value,
+          formDuration.value,
+          formFImage.value,
+          formXImages.value,
+          formPrice.value,
+          formCategory.value
+  );
+
+  hideAddTaskWindow();
+}
+
+
 </script>
- 
+
 <template>
   <div>
-    <form>
-      <label for="title">Title:</label><br>
-      <input type="text" id="title" placeholder="Title"><br><br>
+    <div id="AddTaskWindow" v-if="taskWindowIsVisible">
+      <form v-on:submit.prevent="">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" placeholder="Title" v-model="formTitle"><br><br>
 
-      <label for="frontImage">frontImage:</label><br>
-      <input type="text" id="frontImage" placeholder="frontImage"><br><br>
+        <label for="frontImage">frontImage:</label><br>
+        <input type="text" id="frontImage" placeholder="frontImage" v-model="formFImage"><br><br>
 
-      <label for="extraImages">extraImages:</label><br>
-      <input type="text" id="extraImages" placeholder="extraImages"><br><br>
+        <label for="extraImages">extraImages:</label><br>
+        <input type="text" id="extraImages" placeholder="extraImages" v-model="formXImages"><br><br>
 
-      <label for="description">description:</label><br>
-      <input type="text" id="description" placeholder="description"><br><br>
+        <label for="description">description:</label><br>
+        <input type="text" id="description" placeholder="description" v-model="formDescription"><br><br>
 
-      <label for="price">price:</label><br>
-      <input type="text" id="price" placeholder="price"><br><br>
+        <label for="price">price:</label><br>
+        <input type="text" id="price" placeholder="price" v-model="formPrice"><br><br>
 
-      <label for="category">category:</label><br>
-      <input type="text" id="category" placeholder="category"><br><br>
-      <br>
-      <button type="submit">Tilføj produkt</button>
+        <label for="category">category:</label><br>
+        <input type="text" id="category" placeholder="category" v-model="formCategory"><br><br>
+        <br>
 
-    </form>
+        <button type="submit" @click="submitNewTaskForm" class="taskWindowButton">Tilføj</button>
+        <button @click="hideAddTaskWindow" class="taskWindowButton">Luk</button>
+
+        <div v-if="dataIsMissing">
+          <p class="missingDataText">Alle felter ikke udfyldt</p>
+        </div>
+
+      </form>
+    </div>
+    <button @click="showAddTaskWindow" class="addTaskButton" v-if="!taskWindowIsVisible">Tilføj nyt produkt</button>
   </div>
 </template>
 
