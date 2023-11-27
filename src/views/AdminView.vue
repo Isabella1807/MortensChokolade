@@ -70,7 +70,7 @@ const showNewInformation = () => {
 };
 
 const hideNewInformation = () => {
-  addNewProductWindowVisible.value = false;
+  addNewInformtaionFooter.value = false;
   formTitleFooter.value = '';
   formHours.value = '';
   formPhone.value = '';
