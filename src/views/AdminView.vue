@@ -71,6 +71,7 @@ const showNewInformation = () => {
 
 const hideNewInformation = () => {
   addNewInformtaionFooter.value = false;
+
   formTitleFooter.value = '';
   formHours.value = '';
   formPhone.value = '';
