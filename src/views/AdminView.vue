@@ -81,8 +81,8 @@ const hideNewInformation = () => {
 const submitNewInformation = () => {
   if (
     formTitleFooter.value == ''
-    || formHours.value === ''
-    || formPhone.value === '') {
+    || formHours.value == ''
+    || formPhone.value == '') {
     infoIsMissing.value = true;
     return;
   }
@@ -137,7 +137,7 @@ const submitNewInformation = () => {
 
   <footer>
     <div>
-      <div id="AddTaskWindow" v-if="addNewInformtaionFooter">
+      <div id="AddInformation" v-if="addNewInformtaionFooter">
         <form v-on:submit.prevent="">
 
           <label for="footerTitle">footerTitle:</label><br>
