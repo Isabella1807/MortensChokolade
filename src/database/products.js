@@ -1,4 +1,4 @@
-import {addDoc, collection, getDocs, where, query} from "firebase/firestore";
+import { addDoc, collection, getDocs, where, query } from "firebase/firestore";
 import myDB from "./DB";
 
 const productsCollection = "products";
