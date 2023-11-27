@@ -1,27 +1,26 @@
 <script setup>
-import {onMounted} from 'vue';
-import {isaTestAddDoc} from "../database/MyTest";
+import {onMounted, ref} from "vue";
 import productDB from "../database/products";
 
+let products = ref([]);
+
 onMounted(async () => {
-  console.log('JEG ER LIGE STARTET');
-  //extraImages HAVE to be an array, price HAVE to be a number, and dont skip any parameters
-  /*productDB.addNewProduct(
-      "fff",
-      "g.png",
-      ["hejs.png", "ghgh.png"],
-      "jjj",
-      3,
-      "kategori"
-  );*/
-  const allProducts = await productDB.getAllProducts('gris');
-  console.log(allProducts);
+  products.value = await productDB.getAllProducts();
 });
 
 </script>
 
 <template>
-
+  <h1>SHOP VIEW</h1>
+  <div>
+    <div>
+      <ul>
+        <li v-for="product in products">
+          {{product.title}}
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <style scoped>

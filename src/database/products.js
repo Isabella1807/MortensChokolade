@@ -1,9 +1,12 @@
-import {addDoc, collection, getDocs, where, query} from "firebase/firestore";
+import { addDoc, collection, getDocs, where, query } from "firebase/firestore";
 import myDB from "./DB";
 
 const productsCollection = "products";
 
-const getAllProducts = async(myCategory) => {
+/** ///////////// **/
+/** SHOW PRODUCTS **/
+/** ///////////// **/
+const getAllProducts = async (myCategory) => {
     const result = [];
 
     let myQuery;
@@ -30,7 +33,10 @@ const getAllProducts = async(myCategory) => {
     return result;
 }
 
-const addNewProduct = async(title, frontImage, extraImages, description, price, category) => {
+/** //////////// **/
+/** ADD PRODUCTS **/
+/** //////////// **/
+const addNewProduct = async (title, frontImage, extraImages, description, price, category) => {
     await addDoc(collection(myDB, productsCollection), {
         title,
         frontImage,
@@ -38,17 +44,22 @@ const addNewProduct = async(title, frontImage, extraImages, description, price, 
         description,
         price,
         category,
-    }).then((a) => {
-        console.log("Document written with ID: ", a);
     }).catch((e) => {
         console.error("Error adding document: ", e);
     });
 }
 
+
+/** ///////////// **/
+/** EDIT PRODUCTS **/
+/** ///////////// **/
 const editProduct = () => {
 
 }
 
+/** /////////////// **/
+/** DELETE PRODUCTS **/
+/** /////////////// **/
 const deleteProduct = () => {
 
 }
