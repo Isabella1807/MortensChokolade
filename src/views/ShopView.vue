@@ -1,4 +1,6 @@
 <script setup>
+import ShopProduct from "@/components/ShopComponents/ShopProduct.vue";
+import ShopCategorizer from "@/components/ShopComponents/ShopCategorizer.vue";
 import {onMounted, ref} from "vue";
 import productDB from "../database/products";
 
@@ -11,17 +13,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1>SHOP VIEW</h1>
-  <div>
-    <div>
-      <ul>
-        <li v-for="product in products">
-          {{product.title}}
-        </li>
-      </ul>
-    </div>
+  <div id="ProductCategoring">
+    <ShopCategorizer :categories="uniqueCategories" />
+  </div>
+
+  <div id="ProductContainer">
+    <ShopProduct v-for="product in products" :title="product.title" :frontImage="product.frontImage" :price="product.price"/>
   </div>
 </template>
 
 <style scoped>
+#ProductContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 </style>
