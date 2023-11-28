@@ -49,7 +49,7 @@ const filteredProducts = computed(() => {
         :title="product.title"
         :frontImage="product.frontImage"
         :price="product.price"
-        :category="product.category"/>
+    />
   </div>
 </template>
 
