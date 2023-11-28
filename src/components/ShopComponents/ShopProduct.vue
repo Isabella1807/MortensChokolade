@@ -2,16 +2,11 @@
 
 const props = defineProps(['title', 'frontImage', 'price'])
 
-// defineProps({
-//   title: String,
-//   frontImage: String,
-//   price: Number,
-// })
 </script>
 
 <template>
-  <div>
-    <img src={{props.frontImage}} alt="Image Tekst">
+  <div class="shopProduct">
+    <img :src="props.frontImage" alt="Image Tekst">
     <div>
       <p>{{ props.title }}</p>
       <p>{{ props.price }}</p>
@@ -21,5 +16,7 @@ const props = defineProps(['title', 'frontImage', 'price'])
 </template>
 
 <style scoped>
-
+.shopProduct{
+  border: 2px solid blue;
+}
 </style>

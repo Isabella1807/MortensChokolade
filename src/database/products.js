@@ -1,7 +1,9 @@
-import { addDoc, collection, getDocs, where, query } from "firebase/firestore";
+import { deleteDoc, doc, addDoc, collection, getDocs, where, query } from "firebase/firestore";
 import myDB from "./DB";
+// import uniqid from 'uniqid';
 
 const productsCollection = "products";
+/*const newId = uniqid('task-');*/
 
 /** ///////////// **/
 /** SHOW PRODUCTS **/
@@ -37,7 +39,9 @@ const getAllProducts = async (myCategory) => {
 /** ADD PRODUCTS **/
 /** //////////// **/
 const addNewProduct = async (title, frontImage, extraImages, description, price, category) => {
+
     await addDoc(collection(myDB, productsCollection), {
+        /*id: newId,*/
         title,
         frontImage,
         extraImages,
@@ -60,9 +64,9 @@ const editProduct = () => {
 /** /////////////// **/
 /** DELETE PRODUCTS **/
 /** /////////////// **/
-const deleteProduct = () => {
-
-}
+const deleteProduct = async (productId) => {}
+//     await deleteDoc(doc(myDB, productsCollection, newId))
+// }
 
 export default {
     getAllProducts,
