@@ -12,7 +12,7 @@ const props = defineProps(['title', 'frontImage', 'price'])
     <div class="productInformationContainer">
       <div>
         <p>{{ props.title }}</p>
-        <p>{{ props.price }}</p>
+        <p>{{ props.price }} DKK</p>
       </div>
       <div class="productAddContainer">
         <button class="productAddProductButton">+</button>
@@ -47,6 +47,10 @@ const props = defineProps(['title', 'frontImage', 'price'])
   justify-content: space-between;
   background-color: white;
   padding: 10px;
+}
+
+.productInformationContainer p{
+  font-size: 20px;
 }
 
 .productAddContainer{

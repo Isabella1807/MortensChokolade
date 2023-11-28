@@ -35,7 +35,7 @@ const filteredProducts = computed(() => {
 
 <template>
   <div id="shopContainer">
-    <div class="testiiing">
+    <div class="shopContainerHelper">
       <div id="productCategoring">
         <!--Vi skriver ikke () efter sortitems, fordi funktionen ikke skal køre lige så snart elementet er rendered-->
         <ShopCategorizer
@@ -66,7 +66,7 @@ const filteredProducts = computed(() => {
   max-width: 100%;
 }
 
-.testiiing {
+.shopContainerHelper {
   width: 100%;
   max-width: 1400px;
 }
@@ -93,6 +93,11 @@ const filteredProducts = computed(() => {
   #productContainer {
     grid-template-columns: 1fr;
     row-gap: 20px;
+  }
+
+  #productCategoring{
+    padding: 40px 0;
+    font-size: 13px;
   }
 }
 </style>
