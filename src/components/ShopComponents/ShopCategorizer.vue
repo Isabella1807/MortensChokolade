@@ -2,7 +2,7 @@
 import {onMounted, ref} from "vue";
 import productDB from "../../database/products";
 
-const props = defineProps(['setCategory']);
+const props = defineProps(['setCategory', 'selectedCategory']);
 
 let categories = ref([]);
 
@@ -27,10 +27,12 @@ const getUniqueCategories = (products) => {
 
 <template>
   <div id="ShopCategoringContainer">
-    <div class="ShopCategoringItem">
+    <div class="ShopCategoringItem" :class="{'active': props.selectedCategory === ''}">
       <h2 @click="() => props.setCategory('')">Alle produkter</h2>
     </div>
-    <div class="ShopCategoringItem" v-for="category in categories" :key="category" @click="() => props.setCategory(category)">
+    <div class="ShopCategoringItem" :class="{'active': props.selectedCategory === category}"
+         v-for="category in categories" :key="category"
+         @click="() => props.setCategory(category)">
       <h2>{{ category }}</h2>
     </div>
   </div>
@@ -39,11 +41,8 @@ const getUniqueCategories = (products) => {
 <style scoped>
 #ShopCategoringContainer {
   display: flex;
-  padding: 50px 0;
   justify-content: space-between;
-  //border: 2px solid greenyellow;
-  overflow-x: auto;
-  color: #707070;
+//border: 2px solid greenyellow; overflow-x: auto; color: #707070;
 }
 
 .ShopCategoringItem {
@@ -51,9 +50,15 @@ const getUniqueCategories = (products) => {
   background-color: white;
   border-radius: 5px;
   padding: 5px 15px;
+  white-space: nowrap;
+  margin: 0 5px;
 }
 
-.ShopCategoringItem:hover{
-  cursor:pointer;
+.ShopCategoringItem:hover {
+  cursor: pointer;
+}
+
+.ShopCategoringItem.active {
+  color: red;
 }
 </style>

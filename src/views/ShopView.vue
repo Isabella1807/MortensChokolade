@@ -13,7 +13,6 @@ onMounted(async () => {
 let filteredCategory = ref("");
 const setFilterCategory = (category) => {
   filteredCategory.value = category
-  console.log("")
 }
 
 const filteredProducts = computed(() => {
@@ -42,6 +41,7 @@ const filteredProducts = computed(() => {
         <ShopCategorizer
             class="shopProductItems"
             :setCategory="setFilterCategory"
+            :selectedCategory="filteredCategory"
         />
       </div>
 
@@ -69,6 +69,10 @@ const filteredProducts = computed(() => {
 .testiiing {
   width: 100%;
   max-width: 1400px;
+}
+
+#productCategoring{
+  padding: 100px 80px;
 }
 
 #productContainer {
