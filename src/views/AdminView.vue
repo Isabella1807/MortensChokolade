@@ -137,7 +137,7 @@ const submitNewInformation = () => {
   </div>
 
 
-<!--  <footer>
+<footer>
     <div>
       <div id="AddTaskWindow" v-if="addNewInformtaionFooter">
         <form v-on:submit.prevent="">
@@ -159,7 +159,7 @@ const submitNewInformation = () => {
       <button @click="showNewInformation" class="addInfoButton" v-if="!addNewInformtaionFooter">Tilføj footer
         info</button>
     </div>
-  </footer>-->
+  </footer>
 </template>
 
 <style scoped></style>
