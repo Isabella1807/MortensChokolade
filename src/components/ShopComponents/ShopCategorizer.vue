@@ -2,6 +2,8 @@
 import {onMounted, ref} from "vue";
 import productDB from "../../database/products";
 
+const props = defineProps(['setCategory']);
+
 let categories = ref([]);
 
 onMounted(async () => {
@@ -17,23 +19,35 @@ const getUniqueCategories = (products) => {
   return Array.from(uniqueCategories);
 };
 
+// function sortItems(abc){
+//   console.log(categories.value[0]);
+//   console.log(abc);
+// }
 </script>
 
 <template>
   <div id="ShopCategoringContainer">
-    <h2 class="ShopCategoringItems">Alle produkter</h2>
-    <div v-for="category in categories" :key="category">
-      <h2 class="ShopCategoringItems">{{ category }}</h2>
+    <div class="ShopCategoringItem">
+      <h2 @click="() => props.setCategory('')">Alle produkter</h2>
+    </div>
+    <div class="ShopCategoringItem" v-for="category in categories" :key="category" @click="() => props.setCategory(category)">
+      <h2>{{ category }}</h2>
     </div>
   </div>
 </template>
 
 <style scoped>
-#ShopCategoringContainer{
+#ShopCategoringContainer {
   display: flex;
   justify-content: space-between;
+  border: 2px solid blue;
 }
 
-.ShopCategoringItems{
+.ShopCategoringItem {
+  border: 2px solid red;
+}
+
+.ShopCategoringItem:hover{
+  cursor:pointer;
 }
 </style>
