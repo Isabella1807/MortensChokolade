@@ -68,29 +68,27 @@ const filteredProducts = computed(() => {
 
 .testiiing {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1400px;
 }
 
 #productContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: solid deeppink 2px;
+  //border: solid deeppink 2px;
   gap: 80px;
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 800px) {
   #productContainer {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    background-color: red;
   }
 }
 
 @media only screen and (max-width: 600px) {
   #productContainer {
     grid-template-columns: 1fr;
-    gap: 0;
-    background-color: blue;
+    row-gap: 20px;
   }
 }
 </style>

@@ -25,6 +25,7 @@ const props = defineProps(['title', 'frontImage', 'price'])
 .shopProduct {
   //border: 2px solid blue;
   max-height: 350px;
+  color: #707070;
 }
 
 .shopProductImageContainer {
@@ -49,13 +50,12 @@ const props = defineProps(['title', 'frontImage', 'price'])
 }
 
 .productAddContainer{
-  border: solid blue 2px;
+  //border: solid blue 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  //padding: 10px 20px;
 }
 .productAddProductButton{
   //border: solid pink 2px;

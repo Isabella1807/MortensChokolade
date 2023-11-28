@@ -39,13 +39,18 @@ const getUniqueCategories = (products) => {
 <style scoped>
 #ShopCategoringContainer {
   display: flex;
+  padding: 50px 0;
   justify-content: space-between;
-  border: 2px solid greenyellow;
+  //border: 2px solid greenyellow;
   overflow-x: auto;
+  color: #707070;
 }
 
 .ShopCategoringItem {
-  border: 2px solid red;
+  border: 2px solid #707070;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
 }
 
 .ShopCategoringItem:hover{
