@@ -30,26 +30,28 @@ const hideAddProductWindow = () => {
 }
 
 // TJEK OM ALLE VÆRDIER ER SAT. IKKE CREATE HVIS NOGET MANGLER
+
 const submitNewProductForm = () => {
   if (
-    formTitle.value === ''
-    || formDescription.value === ''
-    || formFImage.value === ''
-    || formXImages.value === ''
-    || formPrice.value === ''
-    || formCategory.value === '') {
+      //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
+      formTitle.value === ''
+      || formFImage.value === ''
+      || formXImages.value === ''
+      || formDescription.value === ''
+      || formPrice.value === ''
+      || formCategory.value === '') {
     dataIsMissing.value = true;
     return;
   }
 
+  //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
   productDB.addNewProduct(
-    formTitle.value,
-    formDescription.value,
-    formDuration.value,
-    formFImage.value,
-    formXImages.value,
-    formPrice.value,
-    formCategory.value
+      formTitle.value,
+      formFImage.value,
+      formXImages.value,
+      formDescription.value,
+      formPrice.value,
+      formCategory.value
   );
 
   hideAddProductWindow();
@@ -70,7 +72,7 @@ const showNewInformation = () => {
 };
 
 const hideNewInformation = () => {
-  addNewProductWindowVisible.value = false;
+  addNewInformtaionFooter.value = false;
   formTitleFooter.value = '';
   formHours.value = '';
   formPhone.value = '';
@@ -135,7 +137,7 @@ const submitNewInformation = () => {
   </div>
 
 
-  <footer>
+<footer>
     <div>
       <div id="AddTaskWindow" v-if="addNewInformtaionFooter">
         <form v-on:submit.prevent="">
