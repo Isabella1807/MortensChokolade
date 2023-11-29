@@ -1,20 +1,9 @@
 <script setup>
 import {ref} from 'vue';
 
-const props = defineProps(['title', 'frontImage', 'price','id'])
+const props = defineProps(['title', 'frontImage', 'price','id','editProduct','addToCart','deleteProduct','isAdmin'])
 
-const isAdmin = ref(false);
 
-const deleteProduct = (productId) => {
-  console.log("del",productId)
-}
-const editProduct = (productId) => {
-  console.log("edit",productId)
-}
-
-const addToCart = (productId)=>{
-console.log("tilføj til kurv", productId)
-}
 </script>
 
 <template>
@@ -28,10 +17,10 @@ console.log("tilføj til kurv", productId)
         <p>{{ props.price }} DKK</p>
       </div>
       <div class="productAddContainer">
-        <button class="productAddProductButton" v-if="!isAdmin" @click="() => addToCart(props.id)">+</button>
+        <button class="productAddProductButton" v-if="!props.isAdmin" @click="() => props.addToCart(props.id)">+</button>
         <div>
-          <button class="productAddProductButton" v-if="isAdmin" @click="() => deleteProduct(props.id)">DEL</button>
-          <button class="productAddProductButton" v-if="isAdmin" @click="() => editProduct(props.id)">EDIT</button>
+          <button class="productAddProductButton" v-if="props.isAdmin" @click="() => props.deleteProduct(props.id)">DEL</button>
+          <button class="productAddProductButton" v-if="props.isAdmin" @click="() => props.editProduct(props.id)">EDIT</button>
         </div>
       </div>
     </div>

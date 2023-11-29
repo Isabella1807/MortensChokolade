@@ -22,6 +22,9 @@
             <p>
               <router-link to="/admin" class="routerlink">admin</router-link>
             </p>
+            <p>
+              <router-link to="/adminLogin" class="routerlink">Login admin</router-link>
+            </p>
           </nav>
         </div>
         <div class="headerCartIcon">
@@ -122,7 +125,7 @@ header {
 }*/
 
 .headerCartIcon {
-  border: solid green 2px;
+  /*border: solid green 2px;*/
   height: max-content;
   margin: 40px;
 }

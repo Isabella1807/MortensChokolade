@@ -23,4 +23,5 @@ onMounted(async () => {
   </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

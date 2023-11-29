@@ -1,6 +1,13 @@
 <script setup>
 import TheHeader from "./components/HeaderComponents/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
+import {ref} from "vue";
+
+const isAdmin = ref(false);
+
+const setIsAdmin = (state) => {
+isAdmin.value = state;
+}
 </script>
 
 <template>
@@ -8,7 +15,7 @@ import TheFooter from "./components/TheFooter.vue";
   <TheHeader/>
 
   <main>
-    <RouterView/>
+    <RouterView :isAdmin="isAdmin" :setIsAdmin="setIsAdmin"/>
   </main>
 
   <TheFooter/>
