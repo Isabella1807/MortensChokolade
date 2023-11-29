@@ -27,11 +27,13 @@ const getAllInformation = async (myInfo) => {
     return result;
 }
 
-const addNewInformation = async (footerTitle, footerHours, phone) => {
+const addNewInformation = async (footerTitle, footerHours, phone, imageName, ext) => {
     await addDoc(collection(myDB, footerInformation), {
         footerTitle,
         footerHours,
         phone,
+        imageName,
+        ext
     }).then((a) => {
         console.log("document added: ", a);
     }).catch((e) => {
