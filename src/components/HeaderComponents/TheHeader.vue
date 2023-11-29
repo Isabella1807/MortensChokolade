@@ -12,15 +12,15 @@
         <div class="navHelperContainer">
           <nav class="headerNav">
             <p>
-              <router-link to="/" exact tag="li">home</router-link>
+              <router-link to="/" class="routerlink">home</router-link>
             </p>
             <br>
             <p>
-              <router-link to="/shop" exact tag="li">shop</router-link>
+              <router-link to="/shop" class="routerlink">shop</router-link>
             </p>
             <br>
             <p>
-              <router-link to="/admin" exact tag="li">admin</router-link>
+              <router-link to="/admin" class="routerlink">admin</router-link>
             </p>
           </nav>
         </div>
@@ -55,7 +55,7 @@ header {
 }
 
 .headerLogo {
-//border: solid blue 2px;
+  /*border: solid blue 2px;*/
   margin: 40px;
 }
 
@@ -68,25 +68,58 @@ header {
 }
 
 .navHelperContainer {
-  border: solid blue 2px;
+  /*border: solid blue 2px;*/
   width: 100%;
+  padding: 0 20px;
 }
 
 .headerNav {
   display: flex;
-  border: solid red 2px;
+  /*border: solid red 2px;*/
 }
 
-/*.headerNav p{
+.headerNav p{
+  font-size: 30px;
+  margin: 0 30px;
+}
 
-}*/
+.routerlink {
+  color: #CBCBCB;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
 
-.router-link-exact-active {
-  background: yellow;
+.routerlink:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 2px solid;
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(0,1);
+  transform: scale(0,1);
+}
+.router-link-active:after,
+.routerlink:hover:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.headerNav p:hover:after{
+  width: 100%;
+  left: 0;
+}
+
+/*.router-link-exact-active {
   border-radius: 5px;
-  color: red;
-  font-style: italic;
-}
+  color: #CBCBCB;
+}*/
 
 .headerCartIcon {
   border: solid green 2px;
