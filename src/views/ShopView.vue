@@ -51,6 +51,8 @@ const filteredProducts = computed(() => {
       <div id="productContainer">
         <ShopProduct
             v-for="product in filteredProducts"
+            :key="product.id"
+            :id="product.id"
             :title="product.title"
             :frontImage="product.frontImage"
             :price="product.price"
