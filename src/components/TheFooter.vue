@@ -8,16 +8,17 @@ onMounted(async () => {
   footerInfo.value = await footer.getAllInformation();
 });
 
+
 </script>
 
 <template>
   <footer>
     <ul>
-      <li v-for="info in footerInfo">
+      <li v-for="info in footerInfo" :key="info.id">
         {{ info.footerTitle }} <br>
         {{ info.footerHours }} <br>
         {{ info.phone }}
-        <img src="assets/images/" alt="">
+        <img :src="`../src/assets/images/${info.imageName}.${info.ext}`" alt="">
       </li>
     </ul>
   </footer>
