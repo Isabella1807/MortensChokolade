@@ -1,6 +1,7 @@
 <script setup>
-
 const props = defineProps(['title', 'frontImage', 'price'])
+
+
 
 </script>
 
@@ -15,10 +16,12 @@ const props = defineProps(['title', 'frontImage', 'price'])
         <p>{{ props.price }} DKK</p>
       </div>
       <div class="productAddContainer">
-        <button class="productAddProductButton">+</button>
+        <button class="productAddProductButton" @click="showModal">+</button>
       </div>
     </div>
   </div>
+
+  <Modal v-show="isModalVisible"/>
 </template>
 
 <style scoped>
