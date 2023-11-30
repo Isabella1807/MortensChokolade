@@ -25,4 +25,8 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+/*temp max size until fixed <3*/
+footer img{
+  max-width: 500px;
+}
 </style>
