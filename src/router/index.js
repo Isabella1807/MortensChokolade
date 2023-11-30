@@ -26,7 +26,7 @@ const router = createRouter({
       component: () => import('../views/AdminView.vue')
     },
     {
-      path: '/adminLogin',
+      path: '/login',
       name: 'Login admin',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
