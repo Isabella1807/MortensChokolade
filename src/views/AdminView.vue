@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 import productDB from "../database/products";
 import footer from '../database/footer';
 
@@ -58,6 +58,7 @@ const submitNewProductForm = () => {
 }
 
 
+
 const addNewInformtaionFooter = ref(false);
 
 const formTitleFooter = ref('');
@@ -81,17 +82,17 @@ const hideNewInformation = () => {
 
 const submitNewInformation = () => {
   if (
-      formTitleFooter.value == ''
-      || formHours.value === ''
-      || formPhone.value === '') {
+    formTitleFooter.value == ''
+    || formHours.value == ''
+    || formPhone.value == '') {
     infoIsMissing.value = true;
     return;
   }
 
   footer.addNewInformation(
-      formTitleFooter.value,
-      formHours.value,
-      formPhone.value,
+    formTitleFooter.value,
+    formHours.value,
+    formPhone.value,
   );
 
   hideNewInformation();
@@ -100,9 +101,8 @@ const submitNewInformation = () => {
 </script>
 
 <template>
-  <div class="settingsContainer">
-    <div class="headerSpacer"></div>
-    <div class="AddTaskWindow" v-if="addNewProductWindowVisible">
+  <div>
+    <div id="AddTaskWindow" v-if="addNewProductWindowVisible">
       <form v-on:submit.prevent="">
         <label for="title">Title:</label><br>
         <input type="text" id="title" placeholder="Title" v-model="formTitle"><br><br>
@@ -133,41 +133,33 @@ const submitNewInformation = () => {
       </form>
     </div>
     <button @click="showAddProductWindow" class="addProductButton" v-if="!addNewProductWindowVisible">Tilføj nyt
-      produkt
-    </button>
-
-
-    <footer>
-      <div>
-        <div class="AddTaskWindow" v-if="addNewInformtaionFooter">
-          <form v-on:submit.prevent="">
-
-            <label for="footerTitle">footerTitle:</label><br>
-            <input type="text" id="footer-title" placeholder="Title" v-model="formTitleFooter"><br><br>
-
-            <label for="footerHours">footerHours:</label><br>
-            <input type="text" id="footer-hours" placeholder="åbningstider" v-model="formHours"><br><br>
-
-            <label for="phone">phone:</label><br>
-            <input type="text" id="footer-phone" placeholder="telefon" v-model="formPhone"><br><br>
-
-            <button type="submit" @click="submitNewInformation" class="infoWindowButton">Tilføj</button>
-            <button @click="hideNewInformation" class="infoWindowButton">Luk</button>
-          </form>
-
-        </div>
-        <button @click="showNewInformation" class="addInfoButton" v-if="!addNewInformtaionFooter">Tilføj footer
-          info
-        </button>
-      </div>
-    </footer>
+      produkt</button>
   </div>
+
+
+<footer>
+    <div>
+      <div id="AddInformation" v-if="addNewInformtaionFooter">
+        <form v-on:submit.prevent="">
+
+          <label for="footerTitle">footerTitle:</label><br>
+          <input type="text" id="footer-title" placeholder="Title" v-model="formTitleFooter"><br><br>
+
+          <label for="footerHours">footerHours:</label><br>
+          <input type="text" id="footer-hours" placeholder="åbningstider" v-model="formHours"><br><br>
+
+          <label for="phone">phone:</label><br>
+          <input type="text" id="footer-phone" placeholder="telefon" v-model="formPhone"><br><br>
+
+          <button type="submit" @click="submitNewInformation" class="infoWindowButton">Tilføj</button>
+          <button @click="hideNewInformation" class="infoWindowButton">Luk</button>
+        </form>
+
+      </div>
+      <button @click="showNewInformation" class="addInfoButton" v-if="!addNewInformtaionFooter">Tilføj footer
+        info</button>
+    </div>
+  </footer>
 </template>
 
-<style scoped>
-
-.headerSpacer {
-  height:  140px;
-  background-color: green;
-}
-</style>
+<style scoped></style>
