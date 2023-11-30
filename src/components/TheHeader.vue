@@ -1,5 +1,19 @@
 <script setup>
+import { useRouter } from 'vue-router';
+import {computed} from 'vue';
 
+const props = defineProps(['isAdmin', 'setIsAdmin']);
+
+const router = useRouter();
+const path = computed(() => router.currentRoute);
+const adminLogout = () => {
+  props.setIsAdmin(false);
+
+  //Reroute til forsiden på logud, medmindre de er på shop
+  if (path.value.value.path !== "/shop"){
+    router.push('/');
+  }
+}
 </script>
 
 <template>
@@ -7,7 +21,7 @@
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
         <div class="headerLogo">
-          <img src="../../assets/MortensLogo.png" alt="Mortens Chokolade Logo">
+          <img src="../assets/MortensLogo.png" alt="Mortens Chokolade Logo">
         </div>
         <div class="navHelperContainer">
           <nav class="headerNav">
@@ -20,12 +34,13 @@
             </p>
             <br>
             <p>
-              <router-link to="/admin" class="routerlink">admin</router-link>
+              <router-link to="/admin" class="routerlink" v-if="props.isAdmin">admin</router-link>
             </p>
+            <p class="routerlink" v-if="props.isAdmin" @click="adminLogout">log ud</p>
           </nav>
         </div>
         <div class="headerCartIcon">
-          <img src="../../assets/cart.png" alt="Shopping Cart">
+          <img src="../assets/cart.png" alt="Shopping Cart">
         </div>
       </div>
     </div>
@@ -122,7 +137,7 @@ header {
 }*/
 
 .headerCartIcon {
-  border: solid green 2px;
+  /*border: solid green 2px;*/
   height: max-content;
   margin: 40px;
 }

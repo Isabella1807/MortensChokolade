@@ -29,7 +29,21 @@ const filteredProducts = computed(() => {
       return false;
     }*/
   });
-})
+});
+
+////////////ITEM INTERACTION///////////////
+const props = defineProps(['isAdmin','setIsAdmin'])
+const deleteProduct = (productId) => {
+  console.log("del",productId);
+  props.setIsAdmin(false);
+}
+const editProduct = (productId) => {
+  console.log("edit",productId)
+}
+
+const addToCart = (productId)=>{
+  console.log("tilføj til kurv", productId)
+}
 
 </script>
 
@@ -51,10 +65,20 @@ const filteredProducts = computed(() => {
       <div id="productContainer">
         <ShopProduct
             v-for="product in filteredProducts"
+            :key="product.id"
+            :id="product.id"
+            :isAdmin="isAdmin"
+            :deleteProduct="deleteProduct"
+            :editProduct="editProduct"
+            :addToCart="addToCart"
             :title="product.title"
             :frontImage="product.frontImage"
             :price="product.price"
         />
+
+        <div v-if="isAdmin">
+          <p>new</p>
+        </div>
       </div>
     </div>
   </div>
