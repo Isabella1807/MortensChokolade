@@ -29,11 +29,28 @@ const filteredProducts = computed(() => {
       return false;
     }*/
   });
-})
+});
+
+////////////ITEM INTERACTION///////////////
+const props = defineProps(['isAdmin','setIsAdmin'])
+const deleteProduct = (productId) => {
+  console.log("del",productId);
+  props.setIsAdmin(false);
+}
+const editProduct = (productId) => {
+  console.log("edit",productId)
+}
+
+const addToCart = (productId)=>{
+  console.log("tilføj til kurv", productId)
+}
 
 </script>
 
 <template>
+  <div class="shopBannerContainer">
+    <img src="../assets/shopBanner.png" alt="Banner showing delicious chocolates">
+  </div>
   <div id="shopContainer">
     <div class="shopContainerHelper">
       <div id="productCategoring">
@@ -48,10 +65,20 @@ const filteredProducts = computed(() => {
       <div id="productContainer">
         <ShopProduct
             v-for="product in filteredProducts"
+            :key="product.id"
+            :id="product.id"
+            :isAdmin="isAdmin"
+            :deleteProduct="deleteProduct"
+            :editProduct="editProduct"
+            :addToCart="addToCart"
             :title="product.title"
             :frontImage="product.frontImage"
             :price="product.price"
         />
+
+        <div v-if="isAdmin">
+          <p>new</p>
+        </div>
       </div>
     </div>
   </div>
@@ -59,11 +86,24 @@ const filteredProducts = computed(() => {
 
 <style scoped>
 #shopContainer {
-  //margin: 0 200px;
   display: flex;
   justify-content: center;
   padding: 0 20px;
   max-width: 100%;
+}
+
+.shopBannerContainer {
+  /*border: solid deeppink 2px;*/
+  box-shadow: 0px -4px 10px 9px rgba(0,0,0,0.46);
+  -webkit-box-shadow: 0px -4px 10px 9px rgba(0,0,0,0.46);
+  -moz-box-shadow: 0px -4px 10px 9px rgba(0,0,0,0.46);
+}
+
+.shopBannerContainer img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  max-height: 50vh;
 }
 
 .shopContainerHelper {
@@ -71,7 +111,7 @@ const filteredProducts = computed(() => {
   max-width: 1400px;
 }
 
-#productCategoring{
+#productCategoring {
   padding: 100px 80px;
 }
 
@@ -95,7 +135,7 @@ const filteredProducts = computed(() => {
     row-gap: 20px;
   }
 
-  #productCategoring{
+  #productCategoring {
     padding: 40px 0;
     font-size: 13px;
   }
