@@ -2,8 +2,7 @@
 import { ref } from 'vue';
 import productDB from "../database/products";
 import footer from '../database/footer';
-
-const addNewProductWindowVisible = ref(false);
+import Modal from '../components/Modal.vue';
 
 const formTitle = ref('');
 const formDescription = ref('');
@@ -15,11 +14,10 @@ const formCategory = ref('');
 const dataIsMissing = ref(false);
 
 const showAddProductWindow = () => {
-  addNewProductWindowVisible.value = true;
+  addProductModalVisible.value = true;
 };
 
 const hideAddProductWindow = () => {
-  addNewProductWindowVisible.value = false;
   formTitle.value = '';
   formDescription.value = '';
   formFImage.value = '';
@@ -27,6 +25,7 @@ const hideAddProductWindow = () => {
   formPrice.value = '';
   formCategory.value = '';
   dataIsMissing.value = false;
+  addProductModalVisible.value = false;
 }
 
 // TJEK OM ALLE VÆRDIER ER SAT. IKKE CREATE HVIS NOGET MANGLER
@@ -57,7 +56,7 @@ const submitNewProductForm = () => {
   hideAddProductWindow();
 }
 
-
+const addProductModalVisible = ref(false);
 
 const addNewInformtaionFooter = ref(false);
 
@@ -101,39 +100,42 @@ const submitNewInformation = () => {
 </script>
 
 <template>
+  <div class="headerSpacer"></div>
   <div>
-    <div id="AddTaskWindow" v-if="addNewProductWindowVisible">
-      <form v-on:submit.prevent="">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" placeholder="Title" v-model="formTitle"><br><br>
-
-        <label for="frontImage">frontImage:</label><br>
-        <input type="text" id="frontImage" placeholder="frontImage" v-model="formFImage"><br><br>
-
-        <label for="extraImages">extraImages:</label><br>
-        <input type="text" id="extraImages" placeholder="extraImages" v-model="formXImages"><br><br>
-
-        <label for="description">description:</label><br>
-        <input type="text" id="description" placeholder="description" v-model="formDescription"><br><br>
-
-        <label for="price">price:</label><br>
-        <input type="text" id="price" placeholder="price" v-model="formPrice"><br><br>
-
-        <label for="category">category:</label><br>
-        <input type="text" id="category" placeholder="category" v-model="formCategory"><br><br>
-        <br>
-
-        <button type="submit" @click="submitNewProductForm" class="productWindowButton">Tilføj</button>
-        <button @click="hideAddProductWindow" class="productWindowButton">Luk</button>
-
-        <div v-if="dataIsMissing">
-          <p class="missingDataText">Alle felter ikke udfyldt</p>
-        </div>
-
-      </form>
-    </div>
-    <button @click="showAddProductWindow" class="addProductButton" v-if="!addNewProductWindowVisible">Tilføj nyt
+    <button @click="showAddProductWindow" class="addProductButton">Tilføj nyt
       produkt</button>
+
+    <Modal title="Lav nyt produkt" v-if="addProductModalVisible">
+      <div id="AddTaskWindow">
+        <form v-on:submit.prevent="">
+          <label for="title">Produkt navn:</label><br>
+          <input type="text" id="title" placeholder="Title" v-model="formTitle"><br><br>
+
+          <label for="frontImage">frontImage:</label><br>
+          <input type="text" id="frontImage" placeholder="frontImage" v-model="formFImage"><br><br>
+
+          <label for="extraImages">extraImages:</label><br>
+          <input type="text" id="extraImages" placeholder="extraImages" v-model="formXImages"><br><br>
+
+          <label for="description">description:</label><br>
+          <input type="text" id="description" placeholder="description" v-model="formDescription"><br><br>
+
+          <label for="price">price:</label><br>
+          <input type="text" id="price" placeholder="price" v-model="formPrice"><br><br>
+
+          <label for="category">category:</label><br>
+          <input type="text" id="category" placeholder="category" v-model="formCategory"><br><br>
+          <br>
+
+          <button type="submit" @click="submitNewProductForm" class="productWindowButton">Tilføj</button>
+          <button @click="hideAddProductWindow" class="productWindowButton">Luk</button>
+
+          <div v-if="dataIsMissing">
+            <p class="missingDataText">Alle felter ikke udfyldt</p>
+          </div>
+        </form>
+      </div>
+    </Modal>
   </div>
 
 
@@ -162,4 +164,10 @@ const submitNewInformation = () => {
   </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+.headerSpacer{
+    height: 140px;
+    background-color: deeppink;
+}
+
+</style>
