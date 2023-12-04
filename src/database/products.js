@@ -64,9 +64,9 @@ const editProduct = () => {
 /** /////////////// **/
 /** DELETE PRODUCTS **/
 /** /////////////// **/
-const deleteProduct = async (productId) => {}
-//     await deleteDoc(doc(myDB, productsCollection, Id))
-// }
+const deleteProduct = async (productId) => {
+    await deleteDoc(doc(myDB, productsCollection, productId))
+}
 
 export default {
     getAllProducts,

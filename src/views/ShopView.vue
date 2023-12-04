@@ -5,8 +5,11 @@ import {onMounted, computed, ref} from "vue";
 import productDB from "../database/products";
 import AddNewProductModal from "@/components/ShopComponents/AddNewProductModal.vue";
 
+const props = defineProps(['isAdmin','setIsAdmin'])
+
 let products = ref([]);
 
+//product.value er et array af objekter
 onMounted(async () => {
   products.value = await productDB.getAllProducts();
 });
@@ -33,10 +36,12 @@ const filteredProducts = computed(() => {
 });
 
 ////////////ITEM INTERACTION///////////////
-const props = defineProps(['isAdmin','setIsAdmin'])
-const deleteProduct = (productId) => {
-  console.log("del",productId);
-  props.setIsAdmin(false);
+const deleteProduct = async (productId) => {
+  await productDB.deleteProduct(productId);
+  //fjerner produkter lokalt, istedet for at brugeren skal opdatere for at se ændringen
+  products.value = products.value.filter((productObject) => productObject.id !== productId);
+
+  /*console.log("del",productId);*/
 }
 const editProduct = (productId) => {
   console.log("edit",productId)
@@ -76,7 +81,7 @@ const addToCart = (productId)=>{
             :frontImage="product.frontImage"
             :price="product.price"
         />
-        <AddNewProductModal v-if="isAdmin"/>
+        <AddNewProductModal v-if="isAdmin" class="shopProductModal"/>
       </div>
     </div>
   </div>

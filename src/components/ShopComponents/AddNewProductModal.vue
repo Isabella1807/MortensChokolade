@@ -30,7 +30,6 @@ const hideAddProductWindow = () => {
 
 const submitNewProductForm = () => {
   if (
-      //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
       formTitle.value === ''
       || formFImage.value === ''
       || formXImages.value === ''
