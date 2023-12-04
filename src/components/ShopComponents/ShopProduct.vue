@@ -1,8 +1,5 @@
 <script setup>
-import {ref} from 'vue';
-
 const props = defineProps(['title', 'frontImage', 'price','id','editProduct','addToCart','deleteProduct','isAdmin'])
-
 
 </script>
 

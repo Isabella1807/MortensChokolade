@@ -3,6 +3,7 @@ import ShopProduct from "@/components/ShopComponents/ShopProduct.vue";
 import ShopCategorizer from "@/components/ShopComponents/ShopCategorizer.vue";
 import {onMounted, computed, ref} from "vue";
 import productDB from "../database/products";
+import AddNewProductModal from "@/components/ShopComponents/AddNewProductModal.vue";
 
 let products = ref([]);
 
@@ -75,10 +76,7 @@ const addToCart = (productId)=>{
             :frontImage="product.frontImage"
             :price="product.price"
         />
-
-        <div v-if="isAdmin">
-          <p>new</p>
-        </div>
+        <AddNewProductModal v-if="isAdmin"/>
       </div>
     </div>
   </div>
