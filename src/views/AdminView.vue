@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import footer from '../database/footer';
-import myDB from '../database/DB';
 
 const addNewInformtaionFooter = ref(false);
 
