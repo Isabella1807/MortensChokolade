@@ -11,13 +11,15 @@ const props = defineProps(['title']);
 
 <style scoped>
 .modal {
-  background: pink;
+  background: white;
   color: #333;
   position: fixed;
   top: 50%;
   left: 50%;
+
+  /*vh height in proportion to view port*/
   transform: translate(-50%, -50%);
-  width: clamp(320px, 50vw, 500px);
-/*vh height in proportion to view port*/
+  width: clamp(320px, 50vw, 1000px);
+/*  height: clamp(200px, 50vh, 800px);*/
 }
 </style>

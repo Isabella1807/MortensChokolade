@@ -125,6 +125,14 @@ const addToCart = (productId)=>{
   gap: 80px;
 }
 
+.shopProductModal{
+  /*border: solid red 2px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 @media only screen and (max-width: 800px) {
   #productContainer {
     grid-template-columns: repeat(2, 1fr);

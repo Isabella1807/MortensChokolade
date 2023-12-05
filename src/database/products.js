@@ -1,9 +1,7 @@
 import { deleteDoc, doc, addDoc, collection, getDocs, where, query } from "firebase/firestore";
 import myDB from "./DB";
-// import uniqid from 'uniqid';
 
 const productsCollection = "products";
-/*const newId = uniqid('task-');*/
 
 /** ///////////// **/
 /** SHOW PRODUCTS **/
