@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import footer from '../database/footer';
+import myDB from '../database/DB';
 
 const addNewInformtaionFooter = ref(false);
 
@@ -46,7 +47,7 @@ const submitNewInformation = () => {
 <template>
   <div class="headerSpacer"></div>
 
-<footer>
+  <footer>
     <div>
       <div id="AddInformation" v-if="addNewInformtaionFooter">
         <form v-on:submit.prevent="">
