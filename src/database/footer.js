@@ -1,5 +1,5 @@
-import { addDoc, collection, getDocs, where, query } from "firebase/firestore";
 import myDB from "./DB";
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 
 const footerInformation = "footerInfo";
 
@@ -27,13 +27,13 @@ const getAllInformation = async (myInfo) => {
     return result;
 }
 
-const addNewInformation = async (footerTitle, footerHours, phone, imageName, ext) => {
+const addNewInformation = async (footerTitle, footerHours, phone, /*imageName, ext*/) => {
     await addDoc(collection(myDB, footerInformation), {
         footerTitle,
         footerHours,
         phone,
-        imageName,
-        ext
+        /*imageName,
+        ext*/
     }).then((a) => {
         console.log("document added: ", a);
     }).catch((e) => {
@@ -44,4 +44,5 @@ const addNewInformation = async (footerTitle, footerHours, phone, imageName, ext
 export default {
     getAllInformation,
     addNewInformation
-}
+};
+

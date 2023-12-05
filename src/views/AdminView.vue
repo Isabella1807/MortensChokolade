@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import productDB from "../database/products";
 import footer from '../database/footer';
+import myDB from '../database/DB';
 
 const addNewProductWindowVisible = ref(false);
 
@@ -33,25 +34,25 @@ const hideAddProductWindow = () => {
 
 const submitNewProductForm = () => {
   if (
-      //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
-      formTitle.value === ''
-      || formFImage.value === ''
-      || formXImages.value === ''
-      || formDescription.value === ''
-      || formPrice.value === ''
-      || formCategory.value === '') {
+    //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
+    formTitle.value === ''
+    || formFImage.value === ''
+    || formXImages.value === ''
+    || formDescription.value === ''
+    || formPrice.value === ''
+    || formCategory.value === '') {
     dataIsMissing.value = true;
     return;
   }
 
   //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
   productDB.addNewProduct(
-      formTitle.value,
-      formFImage.value,
-      formXImages.value,
-      formDescription.value,
-      formPrice.value,
-      formCategory.value
+    formTitle.value,
+    formFImage.value,
+    formXImages.value,
+    formDescription.value,
+    formPrice.value,
+    formCategory.value
   );
 
   hideAddProductWindow();
@@ -137,7 +138,7 @@ const submitNewInformation = () => {
   </div>
 
 
-<footer>
+  <footer>
     <div>
       <div id="AddInformation" v-if="addNewInformtaionFooter">
         <form v-on:submit.prevent="">
