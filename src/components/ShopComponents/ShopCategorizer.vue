@@ -19,10 +19,6 @@ const getUniqueCategories = (products) => {
   return Array.from(uniqueCategories);
 };
 
-// function sortItems(abc){
-//   console.log(categories.value[0]);
-//   console.log(abc);
-// }
 </script>
 
 <template>

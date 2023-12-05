@@ -3,9 +3,13 @@ import ShopProduct from "@/components/ShopComponents/ShopProduct.vue";
 import ShopCategorizer from "@/components/ShopComponents/ShopCategorizer.vue";
 import {onMounted, computed, ref} from "vue";
 import productDB from "../database/products";
+import AddNewProductModal from "@/components/ShopComponents/AddNewProductModal.vue";
+
+const props = defineProps(['isAdmin','setIsAdmin'])
 
 let products = ref([]);
 
+//product.value er et array af objekter
 onMounted(async () => {
   products.value = await productDB.getAllProducts();
 });
@@ -32,10 +36,12 @@ const filteredProducts = computed(() => {
 });
 
 ////////////ITEM INTERACTION///////////////
-const props = defineProps(['isAdmin','setIsAdmin'])
-const deleteProduct = (productId) => {
-  console.log("del",productId);
-  props.setIsAdmin(false);
+const deleteProduct = async (productId) => {
+  await productDB.deleteProduct(productId);
+  //fjerner produkter lokalt, istedet for at brugeren skal opdatere for at se ændringen
+  products.value = products.value.filter((productObject) => productObject.id !== productId);
+
+  /*console.log("del",productId);*/
 }
 const editProduct = (productId) => {
   console.log("edit",productId)
@@ -75,10 +81,7 @@ const addToCart = (productId)=>{
             :frontImage="product.frontImage"
             :price="product.price"
         />
-
-        <div v-if="isAdmin">
-          <p>new</p>
-        </div>
+        <AddNewProductModal v-if="isAdmin" class="shopProductModal"/>
       </div>
     </div>
   </div>
@@ -120,6 +123,14 @@ const addToCart = (productId)=>{
   grid-template-columns: repeat(3, 1fr);
   //border: solid deeppink 2px;
   gap: 80px;
+}
+
+.shopProductModal{
+  /*border: solid red 2px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 @media only screen and (max-width: 800px) {
