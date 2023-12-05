@@ -36,13 +36,12 @@ const getAllProducts = async (myCategory) => {
 /** //////////// **/
 /** ADD PRODUCTS **/
 /** //////////// **/
-const addNewProduct = async (title, frontImage, extraImages, description, price, category) => {
+const addNewProduct = async (title, frontImage, description, price, category) => {
 
     await addDoc(collection(myDB, productsCollection), {
         /*id: newId,*/
         title,
         frontImage,
-        extraImages,
         description,
         price,
         category,

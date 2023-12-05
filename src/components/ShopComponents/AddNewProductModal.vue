@@ -6,7 +6,6 @@ import productDB from "@/database/products";
 const formTitle = ref('');
 const formDescription = ref('');
 const formFImage = ref('');
-const formXImages = ref('');
 const formPrice = ref('');
 const formCategory = ref('');
 const dataIsMissing = ref(false);
@@ -19,7 +18,6 @@ const hideAddProductWindow = () => {
   formTitle.value = '';
   formDescription.value = '';
   formFImage.value = '';
-  formXImages.value = '';
   formPrice.value = '';
   formCategory.value = '';
   dataIsMissing.value = false;
@@ -32,7 +30,6 @@ const submitNewProductForm = () => {
   if (
       formTitle.value === ''
       || formFImage.value === ''
-      || formXImages.value === ''
       || formDescription.value === ''
       || formPrice.value === ''
       || formCategory.value === '') {
@@ -44,7 +41,6 @@ const submitNewProductForm = () => {
   productDB.addNewProduct(
       formTitle.value,
       formFImage.value,
-      formXImages.value,
       formDescription.value,
       formPrice.value,
       formCategory.value
@@ -63,7 +59,14 @@ const addProductModalVisible = ref(false);
       <img src="../../assets/images/add.png" alt="tilføj nyt produkt">
     </button>
 
-    <Modal title="Lav nyt produkt" v-if="addProductModalVisible">
+    <Modal v-if="addProductModalVisible" :closeFunction="hideAddProductWindow">
+      <div class="modalHeaderContainer">
+        <h1 class="modalTitle">Tilføj nyt produkt</h1>
+        <button @click="hideAddProductWindow">
+          <img src="../../assets/images/close.png" alt="luk">
+        </button>
+      </div>
+
       <div id="AddTaskWindow">
         <form v-on:submit.prevent="">
 
@@ -75,9 +78,9 @@ const addProductModalVisible = ref(false);
               <div class="addProductInputContainer">
                 <input type="text" id="title" placeholder="Title" v-model="formTitle">
                 <!--<input type="text" id="extraImages" placeholder="extraImages" v-model="formXImages"><br><br>-->
-                <input type="text" id="price" placeholder="price" v-model="formPrice">
+                <input type="number" id="price" placeholder="price" v-model="formPrice">
                 <input type="text" id="category" placeholder="category" v-model="formCategory">
-                <input type="text" id="description" placeholder="description" v-model="formDescription">
+                <textarea id="description" placeholder="description" v-model="formDescription"></textarea>
               </div>
             </div>
           </div>
@@ -85,12 +88,10 @@ const addProductModalVisible = ref(false);
           <div class="addProductModalButtonsContainer">
             <button @click="hideAddProductWindow" class="productWindowButton">Annuller</button>
             <button type="submit" @click="submitNewProductForm" class="productWindowButton">Tilføj produkt</button>
-
-            <div v-if="dataIsMissing">
-              <p class="missingDataText">Alle felter ikke udfyldt</p>
-            </div>
           </div>
-
+          <div v-if="dataIsMissing" class="inputIsMissing">
+            <p class="missingDataText">Alle felter ikke udfyldt</p>
+          </div>
         </form>
       </div>
     </Modal>
@@ -98,14 +99,27 @@ const addProductModalVisible = ref(false);
 </template>
 
 <style scoped>
+.modalHeaderContainer{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.modalHeaderContainer button{
+  border: none;
+  background-color: transparent;
+}
+.modalHeaderContainer button:hover{
+  cursor: pointer;
+}
 #AddTaskWindow {
-  border: solid blue 2px;
+  /*border: solid blue 2px;*/
 }
 
 .addProductContainer {
-  border: solid pink 2px;
+  /*border: solid pink 2px;*/
   display: grid;
   grid-template-columns: 1fr 2fr;
+  gap: 20px;
 }
 
 .addProductButton {
@@ -127,7 +141,7 @@ const addProductModalVisible = ref(false);
   align-items: center;
 }
 
-.rightSectionItems{
+.rightSectionItems {
   /*border: solid blue 2px;*/
 }
 
@@ -147,7 +161,7 @@ const addProductModalVisible = ref(false);
   gap: 30px;
 }
 
-.addProductInputContainer input {
+.addProductInputContainer input,textarea {
   width: 100%;
   font-size: 30px;
   padding: 5px;
@@ -158,10 +172,18 @@ const addProductModalVisible = ref(false);
   /*border: solid deeppink 2px;*/
   display: flex;
   justify-content: right;
+  margin-top: 20px;
 }
 
 .addProductModalButtonsContainer button {
   font-size: 25px;
-  padding: 10px 30px;
+  padding: 10px 45px;
+  margin-left: 20px;
+}
+.inputIsMissing{
+  display: flex;
+  justify-content: right;
+  color: red;
+  font-size: 20px;
 }
 </style>
