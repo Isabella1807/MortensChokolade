@@ -12,7 +12,8 @@ const storage = getStorage();
 let footerInfo = ref([]);
 let productName = ref('');
 let productDescription = ref('');
-let productPrice = ref(0);
+let productPrice = ref('');
+let file = ref(null);
 
 onMounted(async () => {
   footerInfo.value = await footer.getAllInformation();
@@ -26,7 +27,7 @@ const handleFileUpload = (event) => {
 const uploadProduct = async () => {
   // uploader produktbillede
   const imageRef = storageRef(storage, 'images/product_image.jpg');
-  const uploadTask = uploadBytesResumable(imageRef, /* your file here */);
+  const uploadTask = uploadBytesResumable(imageRef, file);
 
   uploadTask.on('state_changed',
     () => { },  // Progress function (optional)
@@ -61,7 +62,7 @@ const uploadProduct = async () => {
     <input v-model="productName" placeholder="Product Name">
     <textarea v-model="productDescription" placeholder="Product Description"></textarea>
     <input type="number" v-model="productPrice" placeholder="Product Price">
-    <button @click="uploadProduct">Upload Product</button>
+    <button @click="uploadProduct" @change="handleFileUpload">Upload Product</button>
   </div>
 </template>
 
