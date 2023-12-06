@@ -1,8 +1,5 @@
 <script setup>
-import {ref} from 'vue';
-
-const props = defineProps(['title', 'frontImage', 'price','id','editProduct','addToCart','deleteProduct','isAdmin'])
-
+const props = defineProps(['title', 'frontImage', 'price', 'id', 'editProduct', 'addToCart', 'deleteProduct', 'isAdmin'])
 
 </script>
 
@@ -17,10 +14,16 @@ const props = defineProps(['title', 'frontImage', 'price','id','editProduct','ad
         <p>{{ props.price }} DKK</p>
       </div>
       <div class="productAddContainer">
-        <button class="productAddProductButton" v-if="!props.isAdmin" @click="() => props.addToCart(props.id)">+</button>
-        <div>
-          <button class="productAddProductButton" v-if="props.isAdmin" @click="() => props.deleteProduct(props.id)">DEL</button>
-          <button class="productAddProductButton" v-if="props.isAdmin" @click="() => props.editProduct(props.id)">EDIT</button>
+        <button class="productAddProductButton" v-if="!props.isAdmin" @click="() => props.addToCart(props.id)">
+          <img src="../../assets/images/add.png" alt="tilføj">
+        </button>
+        <div class="adminShopItemsContainer">
+          <button class="productAddProductButton" v-if="props.isAdmin" @click="() => props.deleteProduct(props.id)">
+            <img src="../../assets/images/trash.png" alt="slet">
+          </button>
+          <button class="productAddProductButton" v-if="props.isAdmin" @click="() => props.editProduct(props.id)">
+            <img src="../../assets/images/edit.png" alt="ændre">
+          </button>
         </div>
       </div>
     </div>
@@ -29,7 +32,7 @@ const props = defineProps(['title', 'frontImage', 'price','id','editProduct','ad
 
 <style scoped>
 .shopProduct {
-//border: 2px solid blue; max-height: 350px; color: #707070;
+//border: 2px solid blue;
 }
 
 .shopProductImageContainer {
@@ -39,12 +42,17 @@ const props = defineProps(['title', 'frontImage', 'price','id','editProduct','ad
 }
 
 .shopProductImageContainer img {
-//border: solid black 1px; object-fit: cover; width: 100%;
+  /*border: solid black 1px;  */
+  object-fit: cover;
+  width: 100%;
   height: 250px;
 }
 
 .productInformationContainer {
-//border: solid cadetblue 1px; display: flex; justify-content: space-between;
+  /*border: solid cadetblue 1px;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
   padding: 10px;
 }
@@ -54,15 +62,14 @@ const props = defineProps(['title', 'frontImage', 'price','id','editProduct','ad
 }
 
 .productAddContainer {
-//border: solid blue 2px; display: flex; align-items: center;
+  /*border: solid blue 2px;*/
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
 }
 
 .productAddProductButton {
-//border: solid pink 2px; font-size: 40px; bottom: 0;
-  right: 0;
+  /*border: solid pink 2px; */
   border: none;
   background-color: transparent;
 }
@@ -73,5 +80,15 @@ const props = defineProps(['title', 'frontImage', 'price','id','editProduct','ad
 
 .productAddProductButton:hover {
   cursor: pointer;
+}
+
+.adminShopItemsContainer {
+  display: flex;
+  /*border: solid blue 2px;*/
+}
+
+.adminShopItemsContainer button img {
+  margin: 5px 10px;
+  /*border: solid red 2px;*/
 }
 </style>

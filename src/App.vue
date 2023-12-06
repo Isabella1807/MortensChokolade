@@ -3,7 +3,7 @@ import TheHeader from "./components/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
 import {ref} from "vue";
 
-const isAdmin = ref(false);
+const isAdmin = ref(true);
 
 const setIsAdmin = (newAdminState) => {
 isAdmin.value = newAdminState;
