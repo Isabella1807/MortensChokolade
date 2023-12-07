@@ -1,8 +1,9 @@
 <script setup>
-
+import bannerVideo from '../components/bannerVideo.vue';
 </script>
 
 <template>
+  <bannerVideo />
   <div class="aboutMorten">
     <img class="aboutMortenPortrait" src="../assets/portrait.png" alt="">
     <p class="aboutMortenText">Morten flyttede til Odense og åbnede sin chokoladebutik i 2019, med en ambition om at
