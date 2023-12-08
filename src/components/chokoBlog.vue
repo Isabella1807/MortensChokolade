@@ -1,0 +1,157 @@
+<script setup></script>
+<template>
+    <!-- chokoladeblog -->
+    <div class="chokoAndEcoSetup">
+        <div class="chokoblogcomplete">
+            <div>
+                <h2>Mortens chokolade blog</h2>
+            </div>
+
+            <div class="blogSetup">
+                <div>
+                    <img class="chokoBlogImage" src="../assets/images/chokoblog.jpg" alt="">
+                </div>
+
+                <div class="blogContent">
+                    <div class="blogText">
+                        <p>Julen i chokoladebutikken 2023
+                            I år består Mortens Julekollektion af:
+                            Mørk chokolade med pomerans
+                            Mørk chokolade med med praliné af råmandler og muskatnød Lys chokolade med julens krydderier
+                            Hvid chokolade a la risalamande
+                            Mørk chokolade med hjemmelavet gløgg
+                            Mørk chokolade med julesnaps
+                        </p>
+                    </div>
+                    <div class="blogButtons">
+                        <button class="blogButton">Læs mere</button>
+                        <button class="blogButton">Gå til blog</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ecoChokoComplete">
+            <h2>Bæredygtig chokolade</h2>
+
+            <div class="ecoChokoSetup">
+                <div class="ecoChokoimages">
+                    <img class="ecoChokoimage1" src="../assets/images/ecochoko1.jpg" alt="">
+                    <img class="ecoChokoimage2" src="../assets/images/ecochoko2.jpg" alt="">
+                </div>
+
+                <div class="ecoChokocontent">
+                    <div class="ecoChokoText">
+                        <p>
+                            Det er vigtigt, at os der arbejder med chokolade er med til at skabe og udvikle bæredygtighed i
+                            kakaoindustrien. Derfor er jeg glad for, at netop den chokolade jeg bruger, har holdning til
+                            netop
+                            dette.
+
+                            Størstedelen af verdens kakao kommer fra Vestafrika, og området står over for de mest alvorlige
+                            bæredygtighedsudfordringer i kakaoindustrien.</p>
+                    </div>
+
+                    <div>
+                        <button class="ecoChokoButton">Læs mere</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<style>
+.chokoBlogImage {
+    width: 250px;
+}
+
+.blogText {
+    width: 250px;
+    line-height: 30px;
+    margin-bottom: 10%;
+}
+
+.blogButton {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 2px;
+}
+
+.blogButtons {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    gap: 10px;
+}
+
+.blogContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogSetup {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.chokoblogcomplete {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 30%;
+    gap: 20px;
+}
+
+.ecoChokoimage1 {
+    width: 250px;
+}
+
+.ecoChokoimage2 {
+    width: 250px;
+}
+
+.ecoChokoimages {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.ecoChokoText {
+    width: 250px;
+    line-height: 30px;
+}
+
+.ecoChokoButton {
+    width: 150px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 2px;
+}
+
+.ecoChokocontent {
+    display: flex;
+    flex-direction: column;
+}
+
+.ecoChokoSetup {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.chokoAndEcoSetup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+.ecoChokoComplete {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+</style>
