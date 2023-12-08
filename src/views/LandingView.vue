@@ -1,5 +1,6 @@
 <script setup>
 import bannerVideo from '../components/bannerVideo.vue';
+import chokoBlog from '../components/chokoBlog.vue';
 </script>
 
 <template>
@@ -29,33 +30,8 @@ import bannerVideo from '../components/bannerVideo.vue';
       smage, for at sikre sig kvaliteten altid er i top.
     </p>
   </div>
-  <div class="chokoblogcomplete">
-    <div>
-      <h2>Mortens chokolade blog</h2>
-    </div>
 
-    <div class="blogSetup">
-      <div>
-        <img class="chokoBlogImage" src="../assets/images/chokoblog.jpg" alt="">
-      </div>
-
-      <div class="blogContent">
-        <div class="blogText">
-          <p>Julen i chokoladebutikken 2023
-            I år består Mortens Julekollektion af:
-            Mørk chokolade med pomerans
-            Mørk chokolade med med praliné af råmandler og muskatnød Lys chokolade med julens krydderier
-            Hvid chokolade a la risalamande
-            Mørk chokolade med hjemmelavet gløgg
-          </p>
-        </div>
-        <div class="blogButtons">
-          <button>Læs mere</button>
-          <button>Gå til blog</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <chokoBlog />
 </template>
 
 <style scoped>
@@ -94,40 +70,5 @@ import bannerVideo from '../components/bannerVideo.vue';
 .aboutMortenText {
   width: 30%;
   line-height: 30px;
-}
-
-.chokoBlogImage {
-  width: 250px;
-}
-
-.blogText {
-  width: 130%;
-  line-height: 30px;
-  margin-bottom: 10%;
-}
-
-.blogButtons {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  gap: 10px;
-}
-
-.blogContent {
-  display: flex;
-  flex-direction: column;
-}
-
-.blogSetup {
-  display: flex;
-  flex-direction: row;
-  gap: 5%;
-}
-
-.chokoblogcomplete {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  width: 30%;
 }
 </style>

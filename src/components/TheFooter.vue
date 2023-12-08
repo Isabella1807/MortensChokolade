@@ -20,23 +20,36 @@ onMounted(async () => {
 });
 
 const handleFileUpload = (event) => {
-  const file = event.target.files[0];
+  file.value = event.target.files[0];
   // håndtere fil upload
 };
 
+/* 
+hvor mange produkter findes der
+lig 1 til, det er mit id for det nye produkt
+produktet skal have dette id og billedet skal have det som navn
+hvad er det for en filtype
+navngiv billedet id.filtype
+
+
+random id sekvens
+
+navnet - mellemrum med random genereret tal som id.
+*/
+
 const uploadProduct = async () => {
   // uploader produktbillede
-  const imageRef = storageRef(storage, 'images/product_image.jpg');
+  const imageRef = storageRef(storage, 'images/product_image2.jpg');
   const uploadTask = uploadBytesResumable(imageRef, file);
 
   uploadTask.on('state_changed',
-    () => { },  // Progress function (optional)
-    () => { },  // Error function (optional)
+    () => { },
+    () => { },
     async () => {
       const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log('File available at', downloadURL);
 
-      // Here, you can add logic to store product information with the downloadURL in your database
+
     }
   );
 };
