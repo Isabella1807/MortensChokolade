@@ -100,5 +100,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 30px;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 </style>
