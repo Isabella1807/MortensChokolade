@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, computed} from 'vue';
 import Modal from "@/components/Modal.vue";
 import productDB from "@/database/products";
 
@@ -11,6 +11,7 @@ const formCategory = ref('');
 const dataIsMissing = ref(false);
 
 const showAddProductWindow = () => {
+  isEditing.value = false;
   addProductModalVisible.value = true;
 };
 
@@ -51,6 +52,28 @@ const submitNewProductForm = () => {
 
 const addProductModalVisible = ref(false);
 
+const isEditing = ref(false);
+const openEditProductModal = (product) => {
+  isEditing.value = true;
+  formTitle.value = product.title;
+  formDescription.value = product.description;
+  formFImage.value = product.frontImage;
+  formPrice.value = product.price;
+  formCategory.value = product.category;
+  addProductModalVisible.value = true;
+}
+
+defineExpose({
+  openEditProductModal
+});
+const modalTitle = computed(() => {
+  return isEditing.value ? "Ændre produkt" : 'Tilføj nyt produkt';
+});
+
+const submitChangedProductForm = () => {
+  console.log("gå");
+}
+
 </script>
 
 <template>
@@ -61,7 +84,7 @@ const addProductModalVisible = ref(false);
 
     <Modal v-if="addProductModalVisible" :closeFunction="hideAddProductWindow">
       <div class="modalHeaderContainer">
-        <h1 class="modalTitle">Tilføj nyt produkt</h1>
+        <h1 class="modalTitle">{{ modalTitle }}</h1>
         <button @click="hideAddProductWindow">
           <img src="../../assets/images/close.png" alt="luk">
         </button>
@@ -85,7 +108,8 @@ const addProductModalVisible = ref(false);
           </div>
           <div class="addProductModalButtonsContainer">
             <button @click="hideAddProductWindow" class="productWindowButton">Annuller</button>
-            <button type="submit" @click="submitNewProductForm" class="productWindowButton">Tilføj produkt</button>
+            <button type="submit" v-if="!isEditing" @click="submitNewProductForm" class="productWindowButton">Tilføj produkt</button>
+            <button type="submit" v-if="isEditing" @click="submitChangedProductForm" class="productWindowButton">Ændre produkt</button>
           </div>
           <div v-if="dataIsMissing" class="inputIsMissing">
             <p class="missingDataText">Alle felter ikke udfyldt</p>
@@ -186,5 +210,9 @@ const addProductModalVisible = ref(false);
   justify-content: right;
   color: red;
   font-size: 20px;
+}
+
+.productWindowButton:hover{
+  cursor: pointer;
 }
 </style>
