@@ -70,7 +70,7 @@ const uploadProduct = async () => {
     </li>
   </ul>
 
-  <div>
+  <div class="productForm">
     <input type="file" @change="handleFileUpload">
     <input v-model="productName" placeholder="Product Name">
     <textarea v-model="productDescription" placeholder="Product Description"></textarea>
@@ -83,5 +83,9 @@ const uploadProduct = async () => {
 /*temp max size until fixed <3*/
 footer img {
   max-width: 500px;
+}
+
+.productForm {
+  margin-bottom: 50px;
 }
 </style>
