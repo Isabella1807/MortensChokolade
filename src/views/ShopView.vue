@@ -37,14 +37,16 @@ const filteredProducts = computed(() => {
 
 ////////////ITEM INTERACTION///////////////
 const deleteProduct = async (productId) => {
-  await productDB.deleteProduct(productId);
-  //fjerner produkter lokalt, istedet for at brugeren skal opdatere for at se ændringen
-  products.value = products.value.filter((productObject) => productObject.id !== productId);
-
-  /*console.log("del",productId);*/
+  if (confirm('Are you sure you want to delete?')) {
+    await productDB.deleteProduct(productId);
+    //fjerner produkter lokalt, istedet for at brugeren skal opdatere for at se ændringen
+    products.value = products.value.filter((productObject) => productObject.id !== productId);
+  }
 }
+const productModal = ref();
+
 const editProduct = (productId) => {
-  console.log("edit",productId)
+  productModal.value.openEditProductModal(products.value.find((item) => item.id === productId));
 }
 
 const addToCart = (productId)=>{
@@ -81,7 +83,7 @@ const addToCart = (productId)=>{
             :frontImage="product.frontImage"
             :price="product.price"
         />
-        <AddNewProductModal v-if="isAdmin" class="shopProductModal"/>
+        <AddNewProductModal v-if="isAdmin" class="shopProductModal" ref="productModal"/>
       </div>
     </div>
   </div>
