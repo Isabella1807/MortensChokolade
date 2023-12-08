@@ -53,8 +53,10 @@ const submitNewProductForm = () => {
 const addProductModalVisible = ref(false);
 
 const isEditing = ref(false);
+const editingProductId = ref('');
 const openEditProductModal = (product) => {
   isEditing.value = true;
+  editingProductId.value = product.id;
   formTitle.value = product.title;
   formDescription.value = product.description;
   formFImage.value = product.frontImage;
@@ -70,8 +72,18 @@ const modalTitle = computed(() => {
   return isEditing.value ? "Ændre produkt" : 'Tilføj nyt produkt';
 });
 
-const submitChangedProductForm = () => {
-  console.log("gå");
+const submitChangedProductForm = async () => {
+  await productDB.editProduct(
+      editingProductId.value,
+      {
+        title: formTitle.value,
+        description: formDescription.value,
+        frontImage: formFImage.value,
+        price: formPrice.value,
+        category: formCategory.value,
+      }
+  )
+  hideAddProductWindow();
 }
 
 </script>
@@ -108,32 +120,38 @@ const submitChangedProductForm = () => {
           </div>
           <div class="addProductModalButtonsContainer">
             <button @click="hideAddProductWindow" class="productWindowButton">Annuller</button>
-            <button type="submit" v-if="!isEditing" @click="submitNewProductForm" class="productWindowButton">Tilføj produkt</button>
-            <button type="submit" v-if="isEditing" @click="submitChangedProductForm" class="productWindowButton">Ændre produkt</button>
+            <button type="submit" v-if="!isEditing" @click="submitNewProductForm" class="productWindowButton">Tilføj
+              produkt
+            </button>
+            <button type="submit" v-if="isEditing" @click="submitChangedProductForm" class="productWindowButton">Ændre
+              produkt
+            </button>
           </div>
           <div v-if="dataIsMissing" class="inputIsMissing">
             <p class="missingDataText">Alle felter ikke udfyldt</p>
           </div>
         </form>
-
       </div>
     </Modal>
   </div>
 </template>
 
 <style scoped>
-.modalHeaderContainer{
+.modalHeaderContainer {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.modalHeaderContainer button{
+
+.modalHeaderContainer button {
   border: none;
   background-color: transparent;
 }
-.modalHeaderContainer button:hover{
+
+.modalHeaderContainer button:hover {
   cursor: pointer;
 }
+
 #addProductWindow {
   /*border: solid blue 2px;*/
 }
@@ -186,7 +204,7 @@ const submitChangedProductForm = () => {
   gap: 30px;
 }
 
-.addProductInputContainer input,textarea {
+.addProductInputContainer input, textarea {
   width: 100%;
   font-size: 25px;
   padding: 5px;
@@ -205,14 +223,15 @@ const submitChangedProductForm = () => {
   padding: 10px 45px;
   margin-left: 20px;
 }
-.inputIsMissing{
+
+.inputIsMissing {
   display: flex;
   justify-content: right;
   color: red;
   font-size: 20px;
 }
 
-.productWindowButton:hover{
+.productWindowButton:hover {
   cursor: pointer;
 }
 </style>
