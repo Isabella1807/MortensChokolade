@@ -16,7 +16,7 @@ const autoplayVideo = () => {
 </script>
 
 <template>
-    <video class="bannerVideo" controls ref="videoElement" @loadeddata="autoplayVideo" autoplay muted>
+    <video class="bannerVideo" controls ref="videoElement" @loadeddata="autoplayVideo" autoplay muted loopgit>
         <source src="../assets/images/banner.mp4" type="video/mp4">
     </video>
 </template>
