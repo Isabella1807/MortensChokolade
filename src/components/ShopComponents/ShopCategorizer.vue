@@ -49,6 +49,7 @@ const getUniqueCategories = (products) => {
   padding: 10px 20px;
   white-space: nowrap;
   margin: 0 5px;
+  transition: 0.4s;
 }
 .ShopCategoringItem h2{
   font-weight: 500;
@@ -56,6 +57,9 @@ const getUniqueCategories = (products) => {
 
 .ShopCategoringItem:hover {
   cursor: pointer;
+  background-color: #707070;
+  color: white;
+  animation: ease-in;
 }
 
 .ShopCategoringItem.active {

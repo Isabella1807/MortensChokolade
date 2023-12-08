@@ -11,7 +11,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyC86CO6SSjqIsQWBal7saC-hV_pAvQEY3M",
     authDomain: "mortenschokolade.firebaseapp.com",
     projectId: "mortenschokolade",
-    storageBucket: "mortenschokolade.appspot.com",
+    /*storageBucket: "mortenschokolade.appspot.com",*/
     messagingSenderId: "427824695239",
     appId: "1:427824695239:web:603ac1fec0ad477fa13be2",
     measurementId: "G-18H1B9W5C1",

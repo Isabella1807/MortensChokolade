@@ -21,4 +21,6 @@ const setIsAdmin = (newAdminState) => {
   <TheFooter />
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
+

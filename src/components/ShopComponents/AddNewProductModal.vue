@@ -67,9 +67,9 @@ const addProductModalVisible = ref(false);
         </button>
       </div>
 
-      <div id="AddTaskWindow">
-        <form v-on:submit.prevent="">
+      <div id="addProductWindow">
 
+        <form v-on:submit.prevent="">
           <div class="addProductContainer">
             <div class="addProductAddImageContainer">
               <input type="text" id="frontImage" placeholder="Upload billede  +" v-model="formFImage">
@@ -77,14 +77,12 @@ const addProductModalVisible = ref(false);
             <div class="rightSectionItems">
               <div class="addProductInputContainer">
                 <input type="text" id="title" placeholder="Title" v-model="formTitle">
-                <!--<input type="text" id="extraImages" placeholder="extraImages" v-model="formXImages"><br><br>-->
                 <input type="number" id="price" placeholder="price" v-model="formPrice">
                 <input type="text" id="category" placeholder="category" v-model="formCategory">
                 <textarea id="description" placeholder="description" v-model="formDescription"></textarea>
               </div>
             </div>
           </div>
-
           <div class="addProductModalButtonsContainer">
             <button @click="hideAddProductWindow" class="productWindowButton">Annuller</button>
             <button type="submit" @click="submitNewProductForm" class="productWindowButton">Tilføj produkt</button>
@@ -93,6 +91,7 @@ const addProductModalVisible = ref(false);
             <p class="missingDataText">Alle felter ikke udfyldt</p>
           </div>
         </form>
+
       </div>
     </Modal>
   </div>
@@ -111,7 +110,7 @@ const addProductModalVisible = ref(false);
 .modalHeaderContainer button:hover{
   cursor: pointer;
 }
-#AddTaskWindow {
+#addProductWindow {
   /*border: solid blue 2px;*/
 }
 
@@ -128,10 +127,12 @@ const addProductModalVisible = ref(false);
   padding: 100px;
   border: none;
   background-color: white;
+  transition: 0.3s;
 }
 
 .addProductButton:hover {
   cursor: pointer;
+  background-color: #d4d4d4;
 }
 
 .addProductAddImageContainer {
@@ -163,7 +164,7 @@ const addProductModalVisible = ref(false);
 
 .addProductInputContainer input,textarea {
   width: 100%;
-  font-size: 30px;
+  font-size: 25px;
   padding: 5px;
   border: solid grey 2px;
 }
