@@ -13,7 +13,7 @@ const adminPassword = ref('');
 
 let errorInLogin = false;
 const loginAsAdmin = () => {
-  if (adminLogin.username === adminName.value && adminLogin.password === adminPassword.value){
+  if (adminLogin.username === adminName.value && adminLogin.password === adminPassword.value) {
     props.setIsAdmin(true);
     adminName.value = '';
     adminPassword.value = '';
@@ -28,22 +28,24 @@ const loginAsAdmin = () => {
   <div>
     <div class="headerSpacer"></div>
     <div class="adminLoginContainer">
-      <div class="adminLoginFormContainer">
-        <form class="adminLoginForm">
-          <label for="brugernavn">Brugernavn:</label><br>
-          <input type="text" id="brugernavn" placeholder="Indtast brugernavn" v-model="adminName"><br><br>
-
-          <label for="kodeord">Kodeord:</label><br>
-          <input type="password" id="kodeord" placeholder="Indtast kodeord" v-model="adminPassword"><br><br>
-
-          <div>
-            <button type="submit" @click="loginAsAdmin"> Log ind</button>
-          </div>
-        </form>
-        <div v-if="errorInLogin" class="errorContainer">
-          <p>Brugernavn eller kodeord forkert</p>
+      <form class="adminLoginForm">
+        <div>
+          <label for="brugernavn">Brugernavn:</label>
+          <input type="text" id="brugernavn" placeholder="Indtast brugernavn" v-model="adminName">
         </div>
-      </div>
+        <div>
+          <label for="kodeord">Kodeord:</label>
+          <input type="password" id="kodeord" placeholder="Indtast kodeord" v-model="adminPassword">
+          <div v-if="errorInLogin" class="errorContainer">
+            <p>Brugernavn eller kodeord forkert</p>
+          </div>
+        </div>
+
+
+        <div class="adminLoginButtonContainer">
+          <button type="submit" @click="loginAsAdmin" class="adminLoginButton"> Log ind</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -51,11 +53,52 @@ const loginAsAdmin = () => {
 <style scoped>
 .headerSpacer {
   height: 140px;
-  background-color: deeppink;
+  background-color: beige;
 }
 
-.errorContainer{
+.errorContainer {
   color: red;
   margin: 10px 0;
+}
+
+.adminLoginContainer {
+  border: solid green 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.adminLoginForm {
+  display: grid;
+  gap: 10%;
+  width: 50%;
+  height: 50%;
+  margin: 5%;
+  padding: 5%;
+}
+
+.adminLoginForm label {
+  font-size: 25px;
+}
+
+.adminLoginForm input {
+  border: solid grey 2px;
+  width: 100%;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.adminLoginButtonContainer button {
+  border: solid grey 2px;
+  font-size: 25px;
+  padding: 10px 45px;
+  background-color: white;
+}
+
+.adminLoginButton:hover {
+  cursor: pointer;
+  border: solid darkgray 2px;
+  background-color: grey;
+  color: white;
+
 }
 </style>

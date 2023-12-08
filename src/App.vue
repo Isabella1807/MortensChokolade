@@ -23,5 +23,4 @@ isAdmin.value = newAdminState;
 </template>
 
 <style scoped>
-
 </style>
