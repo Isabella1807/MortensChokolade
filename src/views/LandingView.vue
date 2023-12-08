@@ -1,6 +1,7 @@
 <script setup>
 import bannerVideo from '../components/bannerVideo.vue';
 import chokoBlog from '../components/chokoBlog.vue';
+import courses from '../components/courses.vue';
 </script>
 
 <template>
@@ -32,6 +33,7 @@ import chokoBlog from '../components/chokoBlog.vue';
   </div>
 
   <chokoBlog />
+  <courses />
 </template>
 
 <style scoped>
