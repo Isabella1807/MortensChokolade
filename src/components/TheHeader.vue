@@ -1,5 +1,5 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import {useRouter} from 'vue-router';
 import {computed} from 'vue';
 
 const props = defineProps(['isAdmin', 'setIsAdmin']);
@@ -10,18 +10,28 @@ const adminLogout = () => {
   props.setIsAdmin(false);
 
   //Reroute til forsiden på logud, medmindre de er på shop
-  if (path.value.value.path !== "/shop"){
+  if (path.value.value.path !== "/shop") {
     router.push('/');
   }
 }
+
 </script>
 
 <template>
   <header id="header">
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
+
+        <div class="burgerMenu" @click="toggleBurgerMenu">
+          <div class="topBar"></div>
+          <div class="midBar"></div>
+          <div class="botBar"></div>
+        </div>
+
         <div class="headerLogo">
-          <img src="../assets/MortensLogo.png" alt="Mortens Chokolade Logo">
+          <router-link to="/" class="headerLogoRouter">
+            <img src="../assets/MortensLogo.png" alt="Mortens Chokolade Logo">
+          </router-link>
         </div>
         <div class="navHelperContainer">
           <nav class="headerNav">
@@ -42,6 +52,21 @@ const adminLogout = () => {
         <div class="headerCartIcon">
           <img src="../assets/cart.png" alt="Shopping Cart">
         </div>
+<!--        <div v-if="burgerMenuOpen" class="burgerMenuoverlay">
+          <p>
+            <router-link to="/" class="routerlinkMenu">home</router-link>
+          </p>
+          <br>
+          <p>
+            <router-link to="/shop" class="routerlinkMenu">shop</router-link>
+          </p>
+          <br>
+          <p>
+            <router-link to="/admin" class="routerlinkMenu" v-if="props.isAdmin">admin</router-link>
+          </p>
+          <p class="routerlinkMenu" v-if="props.isAdmin" @click="adminLogout">log ud</p>
+        </div>-->
+
       </div>
     </div>
   </header>
@@ -70,30 +95,24 @@ header {
 }
 
 .headerLogo {
-  /*border: solid blue 2px;*/
   margin: 40px;
 }
 
 .headerLogo img {
   width: 180px;
   height: 80px;
-  /*max-width: 25%;
-  max-width: 100%;
-  height: auto;*/
 }
 
 .navHelperContainer {
-  /*border: solid blue 2px;*/
   width: 100%;
   padding: 0 20px;
 }
 
 .headerNav {
   display: flex;
-  /*border: solid red 2px;*/
 }
 
-.headerNav p{
+.headerNav p {
   font-size: 30px;
   margin: 0 30px;
 }
@@ -117,28 +136,51 @@ header {
   opacity: 0;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
-  -webkit-transform: scale(0,1);
-  transform: scale(0,1);
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
 }
+
 .router-link-active:after,
 .routerlink:hover:after {
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-.headerNav p:hover:after{
+
+.headerNav p:hover:after {
   width: 100%;
   left: 0;
 }
 
-/*.router-link-exact-active {
-  border-radius: 5px;
-  color: #CBCBCB;
-}*/
-
 .headerCartIcon {
-  /*border: solid green 2px;*/
   height: max-content;
   margin: 40px;
+}
+
+.headerCartIcon img {
+  max-height: 50px;
+}
+
+.headerCartIcon:hover {
+  cursor: pointer;
+}
+
+.burgerMenu {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .burgerMenu {
+    display: block;
+    background-color: deeppink;
+  }
+  .headerNav{
+    display: none;
+  }
+  .headerItemsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

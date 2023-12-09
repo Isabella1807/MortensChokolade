@@ -1,4 +1,4 @@
-import { deleteDoc, doc, addDoc, collection, getDocs, where, query } from "firebase/firestore";
+import { deleteDoc, doc, addDoc, collection, getDocs, where, query, updateDoc} from "firebase/firestore";
 import myDB from "./DB";
 
 const productsCollection = "products";
@@ -39,7 +39,6 @@ const getAllProducts = async (myCategory) => {
 const addNewProduct = async (title, frontImage, description, price, category) => {
 
     await addDoc(collection(myDB, productsCollection), {
-        /*id: newId,*/
         title,
         frontImage,
         description,
@@ -54,8 +53,8 @@ const addNewProduct = async (title, frontImage, description, price, category) =>
 /** ///////////// **/
 /** EDIT PRODUCTS **/
 /** ///////////// **/
-const editProduct = () => {
-
+const editProduct = async (productId, changedObject) => {
+    await updateDoc(doc(myDB, productsCollection, productId), changedObject)
 }
 
 /** /////////////// **/
