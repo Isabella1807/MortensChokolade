@@ -38,8 +38,22 @@ navnet - mellemrum med random genereret tal som id.
 */
 
 const uploadProduct = async () => {
-  // uploader produktbillede
-  const imageRef = storageRef(storage, 'images/product_image2.jpg');
+  if (!file.value) {
+    console.error("No file selected");
+    return;
+  }
+
+  // Generere ID med tidsstempel
+  const fileId = Date.now();
+
+  // fil extension fra oprindeligt fil navn
+  const fileExtension = file.value.name.split('.').pop();
+
+  // konstruere nyt filnavn med genereret id og fil extension
+  const newFileName = `${fileId}.${fileExtension}`;
+
+  // uploader produktbillede med nyt filnavn
+  const imageRef = storageRef(storage, `images/${newFileName}`);
   const uploadTask = uploadBytesResumable(imageRef, file);
 
   uploadTask.on('state_changed',
