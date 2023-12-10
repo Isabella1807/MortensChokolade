@@ -2,7 +2,7 @@
 import {useRouter} from 'vue-router';
 import {computed, ref} from 'vue';
 
-const props = defineProps(['isAdmin', 'setIsAdmin']);
+const props = defineProps(['isAdmin', 'setIsAdmin','totalCartAmount']);
 
 const router = useRouter();
 const path = computed(() => router.currentRoute);
@@ -53,6 +53,7 @@ const burgerMenuClick = () => {
         </div>
         <div class="headerCartIcon">
           <img src="../assets/cart.png" alt="Shopping Cart">
+          <p>{{ props.totalCartAmount}}</p>
         </div>
       </div>
 
@@ -157,8 +158,12 @@ header {
 }
 
 .headerCartIcon {
+  display: flex;
   height: max-content;
   margin: 40px;
+}
+.headerCartIcon p{
+  color: white;
 }
 
 .headerCartIcon img {
