@@ -1,6 +1,6 @@
 <script setup>
 import {useRouter} from 'vue-router';
-import {computed} from 'vue';
+import {computed, ref} from 'vue';
 
 const props = defineProps(['isAdmin', 'setIsAdmin']);
 
@@ -15,6 +15,10 @@ const adminLogout = () => {
   }
 }
 
+const burgerIsMenuClicked = ref(false);
+const burgerMenuClick = () => {
+  burgerIsMenuClicked.value = !burgerIsMenuClicked.value;
+}
 </script>
 
 <template>
@@ -22,12 +26,8 @@ const adminLogout = () => {
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
 
-        <i class="fa fa-bars"></i>
-
-        <div class="burgerMenu" @click="toggleBurgerMenu">
-          <div class="burgerBars"></div>
-          <div class="burgerBars"></div>
-          <div class="burgerBars"></div>
+        <div class="burgerContainerLogo"  @click="burgerMenuClick">
+          <i class="fa fa-bars"></i>
         </div>
 
         <div class="headerLogo">
@@ -55,6 +55,24 @@ const adminLogout = () => {
           <img src="../assets/cart.png" alt="Shopping Cart">
         </div>
       </div>
+
+      <div class="burgerMenu" v-if="burgerIsMenuClicked">
+        <div class="brugerMenuItems">
+          <p>
+            <router-link to="/" class="routerlink">home</router-link>
+          </p>
+          <br>
+          <p>
+            <router-link to="/shop" class="routerlink">shop</router-link>
+          </p>
+          <br>
+          <p>
+            <router-link to="/admin" class="routerlink" v-if="props.isAdmin">admin</router-link>
+          </p>
+          <p class="routerlink" v-if="props.isAdmin" @click="adminLogout">log ud</p>
+        </div>
+      </div>
+
     </div>
   </header>
 
@@ -150,22 +168,54 @@ header {
   cursor: pointer;
 }
 
-.burgerMenu {
+.burgerContainerLogo {
+  border: solid pink 2px;
+  width: 40px;
   display: none;
 }
 
-@media only screen and (max-width: 900px) {
-  .burgerMenu {
+.burgerMenu{
+  display: none;
+}
+
+@media only screen and (max-width: 950px) {
+  .burgerMenu{
     display: block;
-    background-color: deeppink;
   }
-  .navHelperContainer{
+  .navHelperContainer {
     display: none;
   }
-  .headerItemsContainer{
+
+  .headerItemsContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .burgerContainerLogo{
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .headerItemsContainer {
+    height: 100px;
+  }
+
+  .headerLogo {
+    margin: 20px;
+  }
+
+  .headerLogo img {
+    width: 140px;
+    height: 60px;
+  }
+
+  .headerCartIcon {
+    margin: 20px;
+  }
+
+  .headerCartIcon img {
+    max-height: 40px;
   }
 }
 </style>
