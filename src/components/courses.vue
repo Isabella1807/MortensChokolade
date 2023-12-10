@@ -103,4 +103,14 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
+@media screen and (max-width: 600px) {
+
+    .imageBlockSetup,
+    .completeCourse {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
 </style>

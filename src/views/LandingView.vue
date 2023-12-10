@@ -73,4 +73,18 @@ import courses from '../components/courses.vue';
   width: 30%;
   line-height: 30px;
 }
+
+@media screen and (max-width: 600px) {
+  .aboutMorten {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .aboutMortenPortrait,
+  .aboutMortenText {
+    width: 250px;
+  }
+
+}
 </style>
