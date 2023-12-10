@@ -22,10 +22,12 @@ const adminLogout = () => {
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
 
+        <i class="fa fa-bars"></i>
+
         <div class="burgerMenu" @click="toggleBurgerMenu">
-          <div class="topBar"></div>
-          <div class="midBar"></div>
-          <div class="botBar"></div>
+          <div class="burgerBars"></div>
+          <div class="burgerBars"></div>
+          <div class="burgerBars"></div>
         </div>
 
         <div class="headerLogo">
@@ -52,21 +54,6 @@ const adminLogout = () => {
         <div class="headerCartIcon">
           <img src="../assets/cart.png" alt="Shopping Cart">
         </div>
-<!--        <div v-if="burgerMenuOpen" class="burgerMenuoverlay">
-          <p>
-            <router-link to="/" class="routerlinkMenu">home</router-link>
-          </p>
-          <br>
-          <p>
-            <router-link to="/shop" class="routerlinkMenu">shop</router-link>
-          </p>
-          <br>
-          <p>
-            <router-link to="/admin" class="routerlinkMenu" v-if="props.isAdmin">admin</router-link>
-          </p>
-          <p class="routerlinkMenu" v-if="props.isAdmin" @click="adminLogout">log ud</p>
-        </div>-->
-
       </div>
     </div>
   </header>
@@ -76,20 +63,18 @@ const adminLogout = () => {
 <style scoped>
 header {
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 999;
 }
 
 .headerHelperContainer {
-  position: absolute;
   width: 100%;
 }
 
 .headerItemsContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: rgba(59, 51, 44, 0.77);
   height: 140px;
 }
@@ -174,12 +159,12 @@ header {
     display: block;
     background-color: deeppink;
   }
-  .headerNav{
+  .navHelperContainer{
     display: none;
   }
   .headerItemsContainer{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 }
