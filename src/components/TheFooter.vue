@@ -22,6 +22,7 @@ onMounted(async () => {
 const handleFileUpload = (event) => {
   file.value = event.target.files[0];
   // håndtere fil upload
+  console.log('Selected file:', file.value.name, 'Size:', file.value.size);
 };
 
 /* 
@@ -38,6 +39,7 @@ navnet - mellemrum med random genereret tal som id.
 */
 
 const uploadProduct = async () => {
+  console.log('Uploading file:', file.value.name, 'Size:', file.value.size);
   if (!file.value) {
     console.error("No file selected");
     return;
@@ -62,14 +64,9 @@ const uploadProduct = async () => {
     async () => {
       const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log('File available at', downloadURL);
-
-
     }
   );
 };
-
-
-
 
 
 </script>
@@ -85,11 +82,17 @@ const uploadProduct = async () => {
   </ul>
 
   <div class="productForm">
+
     <input type="file" @change="handleFileUpload">
+
     <input v-model="productName" placeholder="Product Name">
+
     <textarea v-model="productDescription" placeholder="Product Description"></textarea>
+
     <input type="number" v-model="productPrice" placeholder="Product Price">
-    <button @click="uploadProduct" @change="handleFileUpload">Upload Product</button>
+
+    <button @click="uploadProduct">Upload Product</button>
+
   </div>
 </template>
 

@@ -99,7 +99,6 @@
     display: flex;
     flex-direction: column;
     align-content: flex-start;
-    width: 30%;
     gap: 20px;
 }
 
@@ -153,5 +152,23 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+
+/*responsivitet*/
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (max-width: 600px) {
+
+    .chokoAndEcoSetup {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .ecoChokoSetup,
+    .blogSetup {
+        flex-direction: column;
+    }
 }
 </style>
