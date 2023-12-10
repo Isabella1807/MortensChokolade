@@ -26,7 +26,7 @@ const burgerMenuClick = () => {
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
 
-        <div class="burgerContainerLogo"  @click="burgerMenuClick">
+        <div class="burgerContainerIcon"  @click="burgerMenuClick">
           <i class="fa fa-bars"></i>
         </div>
 
@@ -57,15 +57,13 @@ const burgerMenuClick = () => {
       </div>
 
       <div class="burgerMenu" v-if="burgerIsMenuClicked">
-        <div class="brugerMenuItems">
+        <div class="burgerMenuItems">
           <p>
             <router-link to="/" class="routerlink">home</router-link>
           </p>
-          <br>
           <p>
             <router-link to="/shop" class="routerlink">shop</router-link>
           </p>
-          <br>
           <p>
             <router-link to="/admin" class="routerlink" v-if="props.isAdmin">admin</router-link>
           </p>
@@ -149,6 +147,9 @@ header {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+.routerlink:hover{
+  cursor: pointer;
+}
 
 .headerNav p:hover:after {
   width: 100%;
@@ -168,14 +169,28 @@ header {
   cursor: pointer;
 }
 
-.burgerContainerLogo {
-  border: solid pink 2px;
-  width: 40px;
+.burgerContainerIcon {
+  display: none;
+  color: white;
+  font-size: 45px;
+  margin: 40px;
+}
+
+.burgerContainerIcon:hover{
+  cursor: pointer;
+}
+.burgerMenu{
   display: none;
 }
 
-.burgerMenu{
-  display: none;
+.burgerMenuItems{
+  background-color: #333333;
+  padding: 20px;
+  font-size: 25px;
+}
+
+.burgerMenuItems p:not(:first-child){
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 950px) {
@@ -191,18 +206,18 @@ header {
     justify-content: space-between;
     align-items: center;
   }
-  .burgerContainerLogo{
+  .burgerContainerIcon{
     display: block;
   }
 }
 
 @media only screen and (max-width: 470px) {
   .headerItemsContainer {
-    height: 100px;
+    height: 90px;
   }
 
   .headerLogo {
-    margin: 20px;
+    margin: 20px 20px 5px 20px;
   }
 
   .headerLogo img {
@@ -211,11 +226,14 @@ header {
   }
 
   .headerCartIcon {
-    margin: 20px;
+    margin: 20px 20px 5px 20px;
   }
 
   .headerCartIcon img {
     max-height: 40px;
+  }
+  .burgerContainerIcon{
+    margin: 20px 20px 5px 20px;
   }
 }
 </style>
