@@ -5,7 +5,7 @@ import {onMounted, computed, ref} from "vue";
 import productDB from "../database/products";
 import AddNewProductModal from "@/components/ShopComponents/AddNewProductModal.vue";
 
-const props = defineProps(['isAdmin','setIsAdmin'])
+const props = defineProps(['isAdmin','setIsAdmin', "addToCart"])
 
 let products = ref([]);
 
@@ -49,8 +49,8 @@ const editProduct = (productId) => {
   productModal.value.openEditProductModal(products.value.find((item) => item.id === productId));
 }
 
-const addToCart = (productId)=>{
-  console.log("tilføj til kurv", productId)
+const addToCart = (productId) => {
+  props.addToCart(productId, 1);
 }
 
 </script>

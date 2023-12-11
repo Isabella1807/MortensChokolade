@@ -32,24 +32,20 @@ const props = defineProps(['title', 'frontImage', 'price', 'id', 'editProduct', 
 
 <style scoped>
 .shopProduct {
-//border: 2px solid blue;
 }
 
 .shopProductImageContainer {
-  /*border: solid lightseagreen 2px;*/
   /*Fixed the random gap between image and textbox..*/
   margin-bottom: -4px;
 }
 
 .shopProductImageContainer img {
-  /*border: solid black 1px;  */
   object-fit: cover;
   width: 100%;
   height: 250px;
 }
 
 .productInformationContainer {
-  /*border: solid cadetblue 1px;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,14 +58,12 @@ const props = defineProps(['title', 'frontImage', 'price', 'id', 'editProduct', 
 }
 
 .productAddContainer {
-  /*border: solid blue 2px;*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .productAddProductButton {
-  /*border: solid pink 2px; */
   border: none;
   background-color: transparent;
 }
@@ -84,11 +78,9 @@ const props = defineProps(['title', 'frontImage', 'price', 'id', 'editProduct', 
 
 .adminShopItemsContainer {
   display: flex;
-  /*border: solid blue 2px;*/
 }
 
 .adminShopItemsContainer button img {
   margin: 5px 10px;
-  /*border: solid red 2px;*/
 }
 </style>

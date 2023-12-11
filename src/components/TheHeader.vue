@@ -1,8 +1,8 @@
 <script setup>
 import {useRouter} from 'vue-router';
-import {computed} from 'vue';
+import {computed, ref} from 'vue';
 
-const props = defineProps(['isAdmin', 'setIsAdmin']);
+const props = defineProps(['isAdmin', 'setIsAdmin','totalCartAmount']);
 
 const router = useRouter();
 const path = computed(() => router.currentRoute);
@@ -15,6 +15,10 @@ const adminLogout = () => {
   }
 }
 
+const burgerIsMenuClicked = ref(false);
+const burgerMenuClick = () => {
+  burgerIsMenuClicked.value = !burgerIsMenuClicked.value;
+}
 </script>
 
 <template>
@@ -22,10 +26,8 @@ const adminLogout = () => {
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
 
-        <div class="burgerMenu" @click="toggleBurgerMenu">
-          <div class="topBar"></div>
-          <div class="midBar"></div>
-          <div class="botBar"></div>
+        <div class="burgerContainerIcon"  @click="burgerMenuClick">
+          <i class="fa fa-bars"></i>
         </div>
 
         <div class="headerLogo">
@@ -51,23 +53,25 @@ const adminLogout = () => {
         </div>
         <div class="headerCartIcon">
           <img src="../assets/cart.png" alt="Shopping Cart">
+          <p>{{ props.totalCartAmount}}</p>
         </div>
-<!--        <div v-if="burgerMenuOpen" class="burgerMenuoverlay">
-          <p>
-            <router-link to="/" class="routerlinkMenu">home</router-link>
-          </p>
-          <br>
-          <p>
-            <router-link to="/shop" class="routerlinkMenu">shop</router-link>
-          </p>
-          <br>
-          <p>
-            <router-link to="/admin" class="routerlinkMenu" v-if="props.isAdmin">admin</router-link>
-          </p>
-          <p class="routerlinkMenu" v-if="props.isAdmin" @click="adminLogout">log ud</p>
-        </div>-->
-
       </div>
+
+      <div class="burgerMenu" v-if="burgerIsMenuClicked">
+        <div class="burgerMenuItems">
+          <p>
+            <router-link to="/" class="routerlink">home</router-link>
+          </p>
+          <p>
+            <router-link to="/shop" class="routerlink">shop</router-link>
+          </p>
+          <p>
+            <router-link to="/admin" class="routerlink" v-if="props.isAdmin">admin</router-link>
+          </p>
+          <p class="routerlink" v-if="props.isAdmin" @click="adminLogout">log ud</p>
+        </div>
+      </div>
+
     </div>
   </header>
 
@@ -76,20 +80,18 @@ const adminLogout = () => {
 <style scoped>
 header {
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 999;
 }
 
 .headerHelperContainer {
-  position: absolute;
   width: 100%;
 }
 
 .headerItemsContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: rgba(59, 51, 44, 0.77);
   height: 140px;
 }
@@ -146,6 +148,9 @@ header {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+.routerlink:hover{
+  cursor: pointer;
+}
 
 .headerNav p:hover:after {
   width: 100%;
@@ -153,8 +158,12 @@ header {
 }
 
 .headerCartIcon {
+  display: flex;
   height: max-content;
   margin: 40px;
+}
+.headerCartIcon p{
+  color: white;
 }
 
 .headerCartIcon img {
@@ -165,22 +174,71 @@ header {
   cursor: pointer;
 }
 
-.burgerMenu {
+.burgerContainerIcon {
+  display: none;
+  color: white;
+  font-size: 45px;
+  margin: 40px;
+}
+
+.burgerContainerIcon:hover{
+  cursor: pointer;
+}
+.burgerMenu{
   display: none;
 }
 
-@media only screen and (max-width: 900px) {
-  .burgerMenu {
+.burgerMenuItems{
+  background-color: #333333;
+  padding: 20px;
+  font-size: 25px;
+}
+
+.burgerMenuItems p:not(:first-child){
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 950px) {
+  .burgerMenu{
     display: block;
-    background-color: deeppink;
   }
-  .headerNav{
+  .navHelperContainer {
     display: none;
   }
-  .headerItemsContainer{
+
+  .headerItemsContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+  }
+  .burgerContainerIcon{
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .headerItemsContainer {
+    height: 90px;
+  }
+
+  .headerLogo {
+    margin: 20px 20px 5px 20px;
+  }
+
+  .headerLogo img {
+    width: 140px;
+    height: 60px;
+  }
+
+  .headerCartIcon {
+    margin: 20px 20px 5px 20px;
+  }
+
+  .headerCartIcon img {
+    max-height: 40px;
+  }
+  .burgerContainerIcon{
+    margin: 20px 20px 5px 20px;
   }
 }
 </style>

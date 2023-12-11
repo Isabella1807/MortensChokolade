@@ -64,10 +64,10 @@ const openEditProductModal = (product) => {
   formCategory.value = product.category;
   addProductModalVisible.value = true;
 }
-
 defineExpose({
   openEditProductModal
 });
+
 const modalTitle = computed(() => {
   return isEditing.value ? "Ændre produkt" : 'Tilføj nyt produkt';
 });
