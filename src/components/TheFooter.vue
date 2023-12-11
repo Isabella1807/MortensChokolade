@@ -3,93 +3,54 @@ import {
   onMounted,
   ref
 } from 'vue';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import footer from '../database/footer';
 
-const storage = getStorage();
 
 let footerInfo = ref([]);
-let file = ref({
-  value: null
-});
-let imageUrl = ref('');
 
 onMounted(async () => {
   footerInfo.value = await footer.getAllInformation();
 });
 
-const convertBytesToMB = (bytes) => {
-  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-};
-
-const handleFileUpload = (event) => {
-  file.value = event.target.files[0];
-  // håndtere fil upload
-  console.log('Selected file:', file.value.name, 'Size:', convertBytesToMB(file.value.size));
-
-};
-
-
-const uploadProduct = async () => {
-  console.log('Uploading file:', file.value?.name, 'Size:', convertBytesToMB(file.value?.size));
-  if (!file.value) {
-    console.error("No file selected");
-    return;
-  }
-
-  // Generere ID med tidsstempel
-  const fileId = Date.now();
-
-  // fil extension fra oprindeligt fil navn
-  const fileExtension = file.value.name.split('.').pop();
-
-  // konstruere nyt filnavn med genereret id og fil extension
-  const newFileName = `${fileId}.${fileExtension}`;
-
-  //uploader produktbillede med nyt filnavn
-  const imageRef = storageRef(storage, `images/${newFileName}`);
-  const uploadTask = uploadBytes(imageRef, file.value);
-  console.log('Upload task object:', uploadTask);
-
-  try {
-    const snapshot = await uploadTask;
-    const downloadURL = await getDownloadURL(snapshot.ref);
-    console.log('File available at', downloadURL);
-
-    // Opdater imageUrl med downloadURL
-    imageUrl.value = downloadURL;
-  } catch (error) {
-    console.error('Error during upload:', error);
-  }
-};
-
-
-const getImage = async () => {
-  if (imageUrl.value) {
-    // Brug imageUrl til at hente det uploadede billede
-    const image = storageRef(storage, imageUrl.value);
-    const downloadURL = await getDownloadURL(image);
-    console.log('Downloaded image URL:', downloadURL);
-  } else {
-    console.error('No image URL available');
-  }
-};
-const getFullImageUrl = newFileName => {
-  return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}?alt=media&token=9e458b88-9ac5-49c3-8bfd-c4c49fb19cc0`;
-};
 </script>
 
 <template>
-  <ul>
-    <li v-for="info in footerInfo">
-      <div>{{ info.footerTitle }} </div> <br>
-      {{ info.footerHours }} <br>
-      {{ info.phone }}
-    </li>
-  </ul>
-
-  <input type="file" @change="handleFileUpload">
-  <button @click="uploadProduct">Upload Product</button>
-  <img :src="getFullImageUrl('1702308946881.PNG')" alt="">
-  <img :src="imageUrl" alt="">
+  <div class="footerContainer">
+    <img class="logoImage" src="../assets/MortensLogo.png" alt="">
+    <ul>
+      <li v-for="info in footerInfo">
+        <div class="footerTitle">{{ info.footerTitle }} </div> <br>
+        <div class="footerHours"> {{ info.footerHours }} </div><br>
+        <div class="kontakt">{{ info.phone }} </div>
+      </li>
+    </ul>
+  </div>
 </template>
+
+<style>
+.footerContainer {
+  background-color: #3B332C;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.logoImage {
+  width: 350px;
+}
+
+.footerHours {
+  width: 200px;
+  color: white;
+}
+
+.footerTitle {
+  color: white;
+}
+
+.kontakt {
+  color: white;
+}
+</style>

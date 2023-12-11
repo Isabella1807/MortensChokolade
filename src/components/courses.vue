@@ -20,20 +20,33 @@
                 man laver en lækker flødebolle helt fra bunden, som du selvfølgelig får lov til at nyde efterfølgende. <br>
                 <br>
 
-                Vi tilbyder også heldagskurser, oplæg eller polterabend arrangementer.
+                Vi tilbyder også heldagskurser, oplæg eller polterabend arrangementer. <br> <br>
+                Vel mødt til en hyggelig aften i chokoladekøkkenet.
             </p>
             <button class="courseButton">læs mere</button>
         </div>
 
         <div class="imageBlockSetup">
             <div class="imageBlock1">
-                <img class="courseimage2" src="../assets/images/kurser2.jpg" alt="">
-                <img class="courseimage3" src="../assets/images/kurser3.jpg" alt="">
+                <div>
+                    <img class="courseimage2" src="../assets/images/kursus2.png" alt="">
+                    <p class="courseImageButton">Flødebolle kursus</p>
+                </div>
+                <div>
+                    <img class="courseimage3" src="../assets/images/kursus3.png" alt="">
+                    <p class="courseImageButton">Chokolade Kursus</p>
+                </div>
             </div>
 
             <div class="imageBlock2">
-                <img class="courseimage4" src="../assets/images/kurser4.jpg" alt="">
-                <img class="courseimage5" src="../assets/images/kurser5.jpg" alt="">
+                <div>
+                    <img class="courseimage4" src="../assets/images/kursus4.png" alt="">
+                    <p class="courseImageButton">Heldagskursus</p>
+                </div>
+                <div>
+                    <img class="courseimage5" src="../assets/images/kursus5.png" alt="">
+                    <p class="courseImageButton">Læs mere her</p>
+                </div>
             </div>
         </div>
     </div>
@@ -75,6 +88,14 @@
 .courseimage5 {
     width: 350px;
     height: 250px;
+}
+
+.courseImageButton {
+    background-color: #3b332ca2;
+    padding-top: 10px;
+    color: white;
+    margin-top: -8px;
+    font-size: larger;
 }
 
 .imageBlock1 {

@@ -2,6 +2,7 @@
 import bannerVideo from '../components/bannerVideo.vue';
 import chokoBlog from '../components/chokoBlog.vue';
 import courses from '../components/courses.vue';
+import landingShop from '../components/landingShop.vue';
 </script>
 
 <template>
@@ -13,7 +14,7 @@ import courses from '../components/courses.vue';
       smage,
       håndlavet på bæredygtig belgisk chokolade.</p>
   </div>
-
+  <landingShop />
   <div class="aboutMorten">
     <img class="aboutMortenPortrait" src="../assets/portrait.png" alt="">
     <p class="aboutMortenText">Morten flyttede til Odense og åbnede sin chokoladebutik i 2019, med en ambition om at
@@ -65,7 +66,7 @@ import courses from '../components/courses.vue';
 }
 
 .aboutMortenPortrait {
-  width: 35%;
+  width: 500px;
   height: fit-content;
 }
 
@@ -79,11 +80,12 @@ import courses from '../components/courses.vue';
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding-top: 50px;
   }
 
   .aboutMortenPortrait,
   .aboutMortenText {
-    width: 250px;
+    width: 400px;
   }
 
 }
