@@ -37,7 +37,6 @@ const getUniqueCategories = (products) => {
 #ShopCategoringContainer {
   display: flex;
   justify-content: space-between;
-//border: 2px solid greenyellow; overflow-x: auto; color: #707070;
 }
 
 .ShopCategoringItem {
