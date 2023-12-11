@@ -2,6 +2,9 @@
 import {ref, computed} from 'vue';
 import Modal from "@/components/Modal.vue";
 import productDB from "@/database/products";
+import {useImageUpload} from "@/components/imageUpload";
+
+const {handleFileUpload, imageUrl} = useImageUpload();
 
 const formTitle = ref('');
 const formDescription = ref('');
@@ -30,7 +33,6 @@ const hideAddProductWindow = () => {
 const submitNewProductForm = () => {
   if (
       formTitle.value === ''
-      || formFImage.value === ''
       || formDescription.value === ''
       || formPrice.value === ''
       || formCategory.value === '') {
@@ -41,7 +43,7 @@ const submitNewProductForm = () => {
   //SUPER VIGTIGT DE ER I RIGTIG RÆKKEFØLGE!!!
   productDB.addNewProduct(
       formTitle.value,
-      formFImage.value,
+      imageUrl.value,
       formDescription.value,
       formPrice.value,
       formCategory.value
@@ -59,7 +61,7 @@ const openEditProductModal = (product) => {
   editingProductId.value = product.id;
   formTitle.value = product.title;
   formDescription.value = product.description;
-  formFImage.value = product.frontImage;
+  imageUrl.value = product.frontImage;
   formPrice.value = product.price;
   formCategory.value = product.category;
   addProductModalVisible.value = true;
@@ -78,7 +80,7 @@ const submitChangedProductForm = async () => {
       {
         title: formTitle.value,
         description: formDescription.value,
-        frontImage: formFImage.value,
+        frontImage: imageUrl.value,
         price: formPrice.value,
         category: formCategory.value,
       }
@@ -106,8 +108,9 @@ const submitChangedProductForm = async () => {
 
         <form v-on:submit.prevent="">
           <div class="addProductContainer">
-            <div class="addProductAddImageContainer">
-              <input type="text" id="frontImage" placeholder="Upload billede  +" v-model="formFImage">
+            <div class="addProductAddImageContainer" :style="`background-image: url(${imageUrl})`">
+<!--              <input type="text" id="frontImage" placeholder="Upload billede  +" v-model="formFImage">-->
+              <input type="file" @change="handleFileUpload">
             </div>
             <div class="rightSectionItems">
               <div class="addProductInputContainer">
@@ -178,6 +181,8 @@ const submitChangedProductForm = async () => {
 }
 
 .addProductAddImageContainer {
+  background-size: cover;
+  background-position: center center;
   border: solid grey 2px;
   display: flex;
   justify-content: center;

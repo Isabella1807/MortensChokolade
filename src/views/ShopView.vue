@@ -43,6 +43,8 @@ const deleteProduct = async (productId) => {
     products.value = products.value.filter((productObject) => productObject.id !== productId);
   }
 }
+
+//Reference til mit komponent, længere nede..
 const productModal = ref();
 
 const editProduct = (productId) => {
