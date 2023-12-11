@@ -15,12 +15,42 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ul>
-    <li v-for="info in footerInfo">
-      <div>{{ info.footerTitle }} </div> <br>
-      {{ info.footerHours }} <br>
-      {{ info.phone }}
-
-    </li>
-  </ul>
+  <div class="footerContainer">
+    <img class="logoImage" src="../assets/MortensLogo.png" alt="">
+    <ul>
+      <li v-for="info in footerInfo">
+        <div class="footerTitle">{{ info.footerTitle }} </div> <br>
+        <div class="footerHours"> {{ info.footerHours }} </div><br>
+        <div class="kontakt">{{ info.phone }} </div>
+      </li>
+    </ul>
+  </div>
 </template>
+
+<style>
+.footerContainer {
+  background-color: #3B332C;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.logoImage {
+  width: 350px;
+}
+
+.footerHours {
+  width: 200px;
+  color: white;
+}
+
+.footerTitle {
+  color: white;
+}
+
+.kontakt {
+  color: white;
+}
+</style>

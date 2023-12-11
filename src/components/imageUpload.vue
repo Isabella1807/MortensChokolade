@@ -1,8 +1,5 @@
 <script setup>
-import {
-    onMounted,
-    ref
-} from 'vue';
+import { ref } from 'vue';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const storage = getStorage();
