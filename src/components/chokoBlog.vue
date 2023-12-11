@@ -9,7 +9,8 @@
 
             <div class="blogSetup">
                 <div>
-                    <img class="chokoBlogImage" src="../assets/images/chokoblog.png" alt="">
+                    <img class="chokoBlogImage" src="../assets/images/chokoblog.png"
+                        alt="lækker jule kakao fra Mortens chokolade">
                 </div>
 
                 <div class="blogContent">
@@ -38,8 +39,10 @@
 
             <div class="ecoChokoSetup">
                 <div class="ecoChokoimages">
-                    <img class="ecoChokoimage1" src="../assets/images/ecochoko1.png" alt="">
-                    <img class="ecoChokoimage2" src="../assets/images/ecochoko2.png" alt="">
+                    <img class="ecoChokoimage1" src="../assets/images/ecochoko1.png"
+                        alt="Økologisk chokolade fra Mortens chokolade">
+                    <img class="ecoChokoimage2" src="../assets/images/ecochoko2.png"
+                        alt="Økologisk chokolade fra Mortens Chokolade">
                 </div>
 
                 <div class="ecoChokocontent">
@@ -175,5 +178,4 @@
     .blogSetup {
         flex-direction: column;
     }
-}
-</style>
+}</style>

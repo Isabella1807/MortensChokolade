@@ -3,7 +3,7 @@
 
 <template>
     <div>
-        <img class="courseHeadImage" src="../assets/images/kurser1.jpg" alt="">
+        <img class="courseHeadImage" src="../assets/images/kurser1.jpg" alt="Mortens flødebolle kursus">
     </div>
 
     <div class="completeCourse">
@@ -29,22 +29,22 @@
         <div class="imageBlockSetup">
             <div class="imageBlock1">
                 <div>
-                    <img class="courseimage2" src="../assets/images/kursus2.png" alt="">
+                    <img class="courseimage2" src="../assets/images/kursus2.png" alt="Morten laver flødeboller">
                     <p class="courseImageButton">Flødebolle kursus</p>
                 </div>
                 <div>
-                    <img class="courseimage3" src="../assets/images/kursus3.png" alt="">
+                    <img class="courseimage3" src="../assets/images/kursus3.png" alt="kursus i chokolade temperering og fyldte chokolader">
                     <p class="courseImageButton">Chokolade Kursus</p>
                 </div>
             </div>
 
             <div class="imageBlock2">
                 <div>
-                    <img class="courseimage4" src="../assets/images/kursus4.png" alt="">
+                    <img class="courseimage4" src="../assets/images/kursus4.png" alt="Heldagskursus ved Mortens Chokolade">
                     <p class="courseImageButton">Heldagskursus</p>
                 </div>
                 <div>
-                    <img class="courseimage5" src="../assets/images/kursus5.png" alt="">
+                    <img class="courseimage5" src="../assets/images/kursus5.png" alt="Læs mere om de kurser og events morten tilbyder">
                     <p class="courseImageButton">Læs mere her</p>
                 </div>
             </div>
