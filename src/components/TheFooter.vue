@@ -48,7 +48,7 @@ const uploadProduct = async () => {
 
   //uploader produktbillede med nyt filnavn
   const imageRef = storageRef(storage, `images/${newFileName}`);
-  const uploadTask = uploadBytes(imageRef, file);
+  const uploadTask = uploadBytes(imageRef, file.value);
   console.log('Upload task object:', uploadTask);
 
   try {
@@ -75,7 +75,8 @@ const getImage = async () => {
   }
 };
 const getFullImageUrl = newFileName => {
-  return `gs://mortenschokolade.appspot.com/images/${newFileName}`;
+  // return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}`;
+  return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}?alt=media&token=9e458b88-9ac5-49c3-8bfd-c4c49fb19cc0`;
 };
 </script>
 
@@ -91,5 +92,6 @@ const getFullImageUrl = newFileName => {
 
   <input type="file" @change="handleFileUpload">
   <button @click="uploadProduct">Upload Product</button>
-  <img :src="getFullImageUrl(fileId, fileExtension)" alt="">
+  <img :src="getFullImageUrl('1702308946881.PNG')" alt="">
+  <img :src="imageUrl" alt="">
 </template>

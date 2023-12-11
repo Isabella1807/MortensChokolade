@@ -123,7 +123,6 @@ const addToCart = (productId) => {
 #productContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  //border: solid deeppink 2px;
   gap: 80px;
 }
 

@@ -18,7 +18,6 @@ const getUniqueCategories = (products) => {
   });
   return Array.from(uniqueCategories);
 };
-
 </script>
 
 <template>
