@@ -65,7 +65,7 @@ import courses from '../components/courses.vue';
 }
 
 .aboutMortenPortrait {
-  width: 35%;
+  width: 500px;
   height: fit-content;
 }
 
@@ -83,7 +83,7 @@ import courses from '../components/courses.vue';
 
   .aboutMortenPortrait,
   .aboutMortenText {
-    width: 250px;
+    width: 400px;
   }
 
 }
