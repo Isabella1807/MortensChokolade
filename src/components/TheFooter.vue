@@ -75,7 +75,6 @@ const getImage = async () => {
   }
 };
 const getFullImageUrl = newFileName => {
-  // return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}`;
   return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}?alt=media&token=9e458b88-9ac5-49c3-8bfd-c4c49fb19cc0`;
 };
 </script>
@@ -86,7 +85,6 @@ const getFullImageUrl = newFileName => {
       <div>{{ info.footerTitle }} </div> <br>
       {{ info.footerHours }} <br>
       {{ info.phone }}
-
     </li>
   </ul>
 
