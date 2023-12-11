@@ -66,14 +66,13 @@ const getImage = async () => {
     }
 };
 const getFullImageUrl = newFileName => {
-  return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}?alt=media&token=9e458b88-9ac5-49c3-8bfd-c4c49fb19cc0`
+    return `https://firebasestorage.googleapis.com/v0/b/mortenschokolade.appspot.com/o/images%2F${newFileName}?alt=media&token=9e458b88-9ac5-49c3-8bfd-c4c49fb19cc0`
 };
 </script>
 
 <template>
     <input type="file" @change="handleFileUpload">
     <button @click="uploadProduct">Upload Product</button>
-    <img :src="getFullImageUrl('1702308946881.PNG')" alt="">ut type="file" @change="handleFileUpload">
-    <button @click="uploadProduct">Upload Product</button>
     <img :src="getFullImageUrl('1702308946881.PNG')" alt="">
+    <img src="imageUrl" alt="">
 </template>
