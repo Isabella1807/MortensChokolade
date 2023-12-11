@@ -9,18 +9,20 @@
 
             <div class="blogSetup">
                 <div>
-                    <img class="chokoBlogImage" src="../assets/images/chokoblog.jpg" alt="">
+                    <img class="chokoBlogImage" src="../assets/images/chokoblog.png" alt="">
                 </div>
 
                 <div class="blogContent">
                     <div class="blogText">
                         <p>Julen i chokoladebutikken 2023
-                            I år består Mortens Julekollektion af:
+                            I år består Mortens Julekollektion af: <br>
                             Mørk chokolade med pomerans
                             Mørk chokolade med med praliné af råmandler og muskatnød Lys chokolade med julens krydderier
                             Hvid chokolade a la risalamande
                             Mørk chokolade med hjemmelavet gløgg
-                            Mørk chokolade med julesnaps
+                            Mørk chokolade med julesnaps <br> <br>
+                            Derudover laver vi nye jule-chokoladestænger
+                            Mørk chokolade med appelsincreme
                         </p>
                     </div>
                     <div class="blogButtons">
@@ -36,8 +38,8 @@
 
             <div class="ecoChokoSetup">
                 <div class="ecoChokoimages">
-                    <img class="ecoChokoimage1" src="../assets/images/ecochoko1.jpg" alt="">
-                    <img class="ecoChokoimage2" src="../assets/images/ecochoko2.jpg" alt="">
+                    <img class="ecoChokoimage1" src="../assets/images/ecochoko1.png" alt="">
+                    <img class="ecoChokoimage2" src="../assets/images/ecochoko2.png" alt="">
                 </div>
 
                 <div class="ecoChokocontent">
@@ -49,7 +51,8 @@
                             dette.
 
                             Størstedelen af verdens kakao kommer fra Vestafrika, og området står over for de mest alvorlige
-                            bæredygtighedsudfordringer i kakaoindustrien.</p>
+                            bæredygtighedsudfordringer i kakaoindustrien. Hele 60% af kakaolandmændene lever under
+                            fattigdomsgrænsen. </p>
                     </div>
 
                     <div>
@@ -60,13 +63,14 @@
         </div>
     </div>
 </template>
+
 <style>
 .chokoBlogImage {
-    width: 250px;
+    width: 300px;
 }
 
 .blogText {
-    width: 250px;
+    width: 300px;
     line-height: 30px;
     margin-bottom: 10%;
 }
@@ -103,11 +107,11 @@
 }
 
 .ecoChokoimage1 {
-    width: 250px;
+    width: 300px;
 }
 
 .ecoChokoimage2 {
-    width: 250px;
+    width: 300px;
 }
 
 .ecoChokoimages {
@@ -119,6 +123,7 @@
 .ecoChokoText {
     width: 250px;
     line-height: 30px;
+    margin-bottom: 10%;
 }
 
 .ecoChokoButton {
