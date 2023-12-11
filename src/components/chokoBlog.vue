@@ -60,6 +60,7 @@
         </div>
     </div>
 </template>
+
 <style>
 .chokoBlogImage {
     width: 250px;

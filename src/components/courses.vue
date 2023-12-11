@@ -27,13 +27,13 @@
 
         <div class="imageBlockSetup">
             <div class="imageBlock1">
-                <img class="courseimage2" src="../assets/images/kurser2.jpg" alt="">
-                <img class="courseimage3" src="../assets/images/kurser3.jpg" alt="">
+                <img class="courseimage2" src="../assets/images/kursus2.png" alt="">
+                <img class="courseimage3" src="../assets/images/kursus3.png" alt="">
             </div>
 
             <div class="imageBlock2">
-                <img class="courseimage4" src="../assets/images/kurser4.jpg" alt="">
-                <img class="courseimage5" src="../assets/images/kurser5.jpg" alt="">
+                <img class="courseimage4" src="../assets/images/kursus4.png" alt="">
+                <img class="courseimage5" src="../assets/images/kursus5.png" alt="">
             </div>
         </div>
     </div>
