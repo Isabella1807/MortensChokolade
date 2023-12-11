@@ -70,6 +70,22 @@ const uploadProduct = async () => {
     );
 };
 
+uploadTask
+    .then((snapshot) => {
+        // Handle success
+        console.log('Upload successful', snapshot);
+        console.log(snapshot)
+        return getDownloadURL(snapshot.ref);
+    })
+    .then((downloadURL) => {
+        // Handle download URL
+        console.log('File available at', downloadURL);
+    })
+    .catch((error) => {
+        // Handle errors
+        console.error('Error during upload:', error);
+    });
+};
 
 
 /*
