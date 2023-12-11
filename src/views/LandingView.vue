@@ -16,7 +16,8 @@ import landingShop from '../components/landingShop.vue';
   </div>
   <landingShop />
   <div class="aboutMorten">
-    <img class="aboutMortenPortrait" src="../assets/portrait.png" alt="">
+    <img class="aboutMortenPortrait" src="../assets/portrait.png"
+      alt="Portræt af chokolademageren Morten, som er indehaver af Mortens Chokolade">
     <p class="aboutMortenText">Morten flyttede til Odense og åbnede sin chokoladebutik i 2019, med en ambition om at
       Odenseanerne skulle have
       adgang til speciallavet chokolade, håndlavet på bæredygtig belgisk chokolade. <br> <br>

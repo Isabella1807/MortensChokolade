@@ -3,15 +3,15 @@
     <div class="landingShopSetup">
         <div>
 
-            <img class="landingShopImg" src="../assets/images/chokoPlade1.png" alt="">
+            <img class="landingShopImg" src="../assets/images/chokoPlade1.png" alt="Økologisk chokoladeplade med flagesslt og rosapeber">
             <p class="landingShopText">Shop chokoladeplader</p>
         </div>
         <div>
-            <img class="landingShopImg" src="../assets/images/juleCacao.png" alt="">
+            <img class="landingShopImg" src="../assets/images/juleCacao.png" alt="Varm Schokolade fra Mortens Chokolade">
             <p class="landingShopText">Shop varm kakao</p>
         </div>
         <div>
-            <img class="landingShopImg" src="../assets/images/coffeeChoko.png" alt="">
+            <img class="landingShopImg" src="../assets/images/coffeeChoko.png" alt="Bland selv chokoladestykker med forskelligt fyld">
             <p class="landingShopText">Shop bland selv chokolade</p>
         </div>
     </div>
