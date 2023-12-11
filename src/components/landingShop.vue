@@ -3,16 +3,24 @@
     <div class="landingShopSetup">
         <div>
 
-            <img class="landingShopImg" src="../assets/images/chokoPlade1.png" alt="Økologisk chokoladeplade med flagesslt og rosapeber">
-            <p class="landingShopText">Shop chokoladeplader</p>
+            <img class="landingShopImg" src="../assets/images/chokoPlade1.png"
+                alt="Økologisk chokoladeplade med flagesslt og rosapeber">
+            <RouterLink to="/shop">
+                <p class="landingShopText">Shop chokoladeplader</p>
+            </RouterLink>
         </div>
         <div>
             <img class="landingShopImg" src="../assets/images/juleCacao.png" alt="Varm Schokolade fra Mortens Chokolade">
-            <p class="landingShopText">Shop varm kakao</p>
+            <RouterLink to="/shop">
+                <p class="landingShopText">Shop varm kakao</p>
+            </RouterLink>
         </div>
         <div>
-            <img class="landingShopImg" src="../assets/images/coffeeChoko.png" alt="Bland selv chokoladestykker med forskelligt fyld">
-            <p class="landingShopText">Shop bland selv chokolade</p>
+            <img class="landingShopImg" src="../assets/images/coffeeChoko.png"
+                alt="Bland selv chokoladestykker med forskelligt fyld">
+            <RouterLink to="/shop">
+                <p class="landingShopText">Shop bland selv chokolade</p>
+            </RouterLink>
         </div>
     </div>
 </template>
