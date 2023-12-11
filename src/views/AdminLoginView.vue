@@ -62,7 +62,6 @@ const loginAsAdmin = () => {
 }
 
 .adminLoginContainer {
-  border: solid green 2px;
   display: flex;
   justify-content: center;
 }
