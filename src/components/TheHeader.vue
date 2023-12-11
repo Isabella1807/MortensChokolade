@@ -2,7 +2,7 @@
 import {useRouter} from 'vue-router';
 import {computed, ref} from 'vue';
 
-const props = defineProps(['isAdmin', 'setIsAdmin','totalCartAmount']);
+const props = defineProps(['isAdmin', 'setIsAdmin', 'totalCartAmount']);
 
 const router = useRouter();
 const path = computed(() => router.currentRoute);
@@ -26,7 +26,7 @@ const burgerMenuClick = () => {
     <div class="headerHelperContainer">
       <div class="headerItemsContainer">
 
-        <div class="burgerContainerIcon"  @click="burgerMenuClick">
+        <div class="burgerContainerIcon" @click="burgerMenuClick">
           <i class="fa fa-bars"></i>
         </div>
 
@@ -38,13 +38,14 @@ const burgerMenuClick = () => {
         <div class="navHelperContainer">
           <nav class="headerNav">
             <p>
-              <router-link to="/" class="routerlink">home</router-link>
+              <router-link to="/" class="routerlink">Home</router-link>
             </p>
-            <br>
             <p>
-              <router-link to="/shop" class="routerlink">shop</router-link>
+              <router-link to="/shop" class="routerlink">Shop</router-link>
             </p>
-            <br>
+            <p class="routerlink">Kurser & events</p>
+            <p class="routerlink">Om Mortens Chokolade</p>
+            <p class="routerlink">Kontakt</p>
             <p>
               <router-link to="/admin" class="routerlink" v-if="props.isAdmin">admin</router-link>
             </p>
@@ -53,7 +54,7 @@ const burgerMenuClick = () => {
         </div>
         <div class="headerCartIcon">
           <img src="../assets/cart.png" alt="Shopping Cart">
-          <p>{{ props.totalCartAmount}}</p>
+          <p>{{ props.totalCartAmount }}</p>
         </div>
       </div>
 
@@ -65,6 +66,16 @@ const burgerMenuClick = () => {
           <p>
             <router-link to="/shop" class="routerlink">shop</router-link>
           </p>
+          <p>
+            <p class="routerlink"> Kurser & events</p>
+          </p>
+          <p>
+            <p class="routerlink"> Om Mortens Chokolade</p>
+          </p>
+          <p>
+            <p class="routerlink"> Kontakt</p>
+          </p>
+
           <p>
             <router-link to="/admin" class="routerlink" v-if="props.isAdmin">admin</router-link>
           </p>
@@ -115,8 +126,8 @@ header {
 }
 
 .headerNav p {
-  font-size: 30px;
-  margin: 0 30px;
+  font-size: 25px;
+  margin: 0 20px;
 }
 
 .routerlink {
@@ -148,7 +159,8 @@ header {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-.routerlink:hover{
+
+.routerlink:hover {
   cursor: pointer;
 }
 
@@ -162,7 +174,8 @@ header {
   height: max-content;
   margin: 40px;
 }
-.headerCartIcon p{
+
+.headerCartIcon p {
   color: white;
 }
 
@@ -181,27 +194,29 @@ header {
   margin: 40px;
 }
 
-.burgerContainerIcon:hover{
+.burgerContainerIcon:hover {
   cursor: pointer;
 }
-.burgerMenu{
+
+.burgerMenu {
   display: none;
 }
 
-.burgerMenuItems{
+.burgerMenuItems {
   background-color: #333333;
   padding: 20px;
   font-size: 25px;
 }
 
-.burgerMenuItems p:not(:first-child){
+.burgerMenuItems p:not(:first-child) {
   margin-top: 20px;
 }
 
-@media only screen and (max-width: 950px) {
-  .burgerMenu{
+@media only screen and (max-width: 1070px) {
+  .burgerMenu {
     display: block;
   }
+
   .navHelperContainer {
     display: none;
   }
@@ -211,7 +226,8 @@ header {
     justify-content: space-between;
     align-items: center;
   }
-  .burgerContainerIcon{
+
+  .burgerContainerIcon {
     display: block;
   }
 }
@@ -237,7 +253,8 @@ header {
   .headerCartIcon img {
     max-height: 40px;
   }
-  .burgerContainerIcon{
+
+  .burgerContainerIcon {
     margin: 20px 20px 5px 20px;
   }
 }

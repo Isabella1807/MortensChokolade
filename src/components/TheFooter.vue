@@ -30,6 +30,7 @@ onMounted(async () => {
 <style>
 .footerContainer {
   background-color: #3B332C;
+  margin-top: 50px;
   padding-top: 50px;
   padding-bottom: 50px;
   display: flex;

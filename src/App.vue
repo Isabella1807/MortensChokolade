@@ -5,7 +5,7 @@ import TheFooter from "./components/TheFooter.vue";
 import { ref } from "vue";
 import {useCart} from "@/components/ShopComponents/CartComposable";
 
-const isAdmin = ref(false);
+const isAdmin = ref(true);
 const {totalCartAmount, addItemToCart} = useCart();
 
 const setIsAdmin = (newAdminState) => {
