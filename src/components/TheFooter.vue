@@ -15,6 +15,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <p>hej isabella</p>
   <div class="footerContainer">
     <img class="logoImage" src="../assets/MortensLogo.png" alt="">
     <ul>
