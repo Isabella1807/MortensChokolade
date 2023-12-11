@@ -8,7 +8,6 @@ const {handleFileUpload, imageUrl} = useImageUpload();
 
 const formTitle = ref('');
 const formDescription = ref('');
-const formFImage = ref('');
 const formPrice = ref('');
 const formCategory = ref('');
 const dataIsMissing = ref(false);
@@ -20,8 +19,8 @@ const showAddProductWindow = () => {
 
 const hideAddProductWindow = () => {
   formTitle.value = '';
+  imageUrl.value = '';
   formDescription.value = '';
-  formFImage.value = '';
   formPrice.value = '';
   formCategory.value = '';
   dataIsMissing.value = false;
@@ -109,7 +108,6 @@ const submitChangedProductForm = async () => {
         <form v-on:submit.prevent="">
           <div class="addProductContainer">
             <div class="addProductAddImageContainer" :style="`background-image: url(${imageUrl})`">
-<!--              <input type="text" id="frontImage" placeholder="Upload billede  +" v-model="formFImage">-->
               <input type="file" @change="handleFileUpload">
             </div>
             <div class="rightSectionItems">
